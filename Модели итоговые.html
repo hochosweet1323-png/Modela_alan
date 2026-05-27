@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5 моделей пижам — Обоснование WB AW25</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;800;900&family=IBM+Plex+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2f4f8;--surf:#fff;--s2:#f0f1f6;--s3:#e4e7f0;
+  --brd:#d4d8e8;--brd2:#bcc2d8;
+  --a1:#1a3fd4;--a2:#7c3aed;--a3:#0d9e6e;--a4:#d4780a;--a5:#c43030;
+  --txt:#121526;--dim:#444860;--mut:#8a93b2;
+  --green:#0d9e6e;--red:#c43030;--orange:#d4780a;--yel:#b88a00;
+  --sh:0 2px 10px rgba(0,0,0,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:'Manrope',sans-serif;font-size:13px;line-height:1.65}
+
+/* HERO */
+.hero{padding:44px 32px 40px;color:#fff;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#0d1830,#192060 50%,#240e60);z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-num{font-family:'Unbounded',sans-serif;font-size:120px;font-weight:900;
+  position:absolute;right:-10px;top:-20px;color:rgba(255,255,255,.04);z-index:0;line-height:1}
+.htag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.htitle{font-family:'Unbounded',sans-serif;font-size:28px;font-weight:900;letter-spacing:-.5px;line-height:1.15;margin-bottom:8px}
+.htitle em{font-style:normal;color:#fbbf24}
+.hsub{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:28px;font-family:'IBM Plex Mono',monospace}
+.hpills{display:flex;flex-wrap:wrap;gap:8px}
+.hpill{padding:4px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.18);
+  font-size:10px;color:rgba(255,255,255,.7);font-family:'IBM Plex Mono',monospace;background:rgba(255,255,255,.08)}
+
+/* NAV DOTS */
+.model-nav{background:var(--surf);border-bottom:1px solid var(--brd);
+  padding:12px 24px;display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+.mnav{padding:5px 14px;border-radius:18px;border:1px solid var(--brd);background:var(--s2);
+  font-size:11px;cursor:pointer;color:var(--dim);transition:all .12s;font-family:'IBM Plex Mono',monospace;text-decoration:none}
+.mnav:hover,.mnav.on{background:var(--a1);border-color:var(--a1);color:#fff;font-weight:700}
+
+/* WRAP */
+.wrap{max-width:1060px;margin:0 auto;padding:28px 18px 60px}
+
+/* MODEL CARD */
+.mcard{border-radius:16px;margin-bottom:32px;overflow:hidden;box-shadow:var(--sh);border:1px solid var(--brd)}
+.mhead{padding:0;position:relative;overflow:hidden}
+.mhead-inner{padding:24px 28px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.mnum{font-family:'Unbounded',sans-serif;font-size:11px;font-weight:900;
+  width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:2px;color:#fff}
+.minfo{flex:1}
+.mcat{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px}
+.mname{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;letter-spacing:-.3px;color:#fff;margin-bottom:6px}
+.msubname{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:10px}
+.mtags{display:flex;flex-wrap:wrap;gap:5px}
+.mtag{display:inline-flex;padding:3px 9px;border-radius:4px;font-size:10px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
+
+/* TREND BADGE */
+.trend{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;
+  font-size:11px;font-family:'IBM Plex Mono',monospace;font-weight:700;margin-top:8px}
+.trend-grow{background:rgba(13,158,110,.2);border:1px solid rgba(13,158,110,.4);color:#a8f0d8}
+.trend-peak{background:rgba(251,191,36,.2);border:1px solid rgba(251,191,36,.4);color:#fde68a}
+.trend-new{background:rgba(167,139,250,.2);border:1px solid rgba(167,139,250,.4);color:#ddd6fe}
+.trend-stable{background:rgba(100,116,139,.2);border:1px solid rgba(100,116,139,.4);color:#cbd5e1}
+
+/* KPI STRIP */
+.kstrip{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.15)}
+.kitem{flex:1;min-width:100px;padding:12px 16px;border-right:1px solid rgba(255,255,255,.12)}
+.kitem:last-child{border-right:none}
+.kl{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);font-family:'IBM Plex Mono',monospace;margin-bottom:4px}
+.kv{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;color:#fff;line-height:1}
+.kv.hi{color:#fbbf24}.kv.pos{color:#6ee7b7}.kv.neg{color:#fca5a5}.kv.warn{color:#fcd34d}
+
+/* BODY */
+.mbody{background:var(--surf);padding:22px 24px}
+
+/* SECTION */
+.sec{margin-bottom:20px}
+.sec-t{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--mut);font-family:'IBM Plex Mono',monospace;margin-bottom:10px;
+  display:flex;align-items:center;gap:7px}
+.sec-t::before{content:'';display:block;width:3px;height:12px;border-radius:2px;background:var(--a1);flex-shrink:0}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:700px){.g2,.g3{grid-template-columns:1fr}}
+
+/* BOXES */
+.box{background:var(--s2);border:1px solid var(--brd);border-radius:10px;padding:14px}
+.box-t{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;margin-bottom:8px}
+.box-green{background:#f0faf6;border:1px solid #90d4b4;border-left:4px solid var(--green)}
+.box-red{background:#fff4f4;border:1px solid #f0a0a0;border-left:4px solid var(--red)}
+.box-blue{background:#f0f4ff;border:1px solid #a8bef0;border-left:4px solid var(--a1)}
+.box-yel{background:#fffbe8;border:1px solid #e6d060;border-left:4px solid var(--yel)}
+.box-purple{background:#f5f0ff;border:1px solid #c4b5fd;border-left:4px solid var(--a2)}
+.box p{font-size:12px;color:var(--dim);line-height:1.75}
+.box b{color:var(--txt);font-weight:700}
+.box ul{list-style:none;display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--dim)}
+.box ul li{display:flex;gap:7px}
+.box ul li::before{content:'→';color:var(--a1);font-weight:700;flex-shrink:0}
+
+/* MONTH GRID */
+.mgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--brd);border-radius:8px;overflow:hidden;margin-bottom:6px}
+.mgh{background:var(--s2);padding:5px 3px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--mut);font-weight:600}
+.mgc{background:var(--surf);padding:6px 3px;text-align:center;display:flex;flex-direction:column;gap:1px}
+.mgr{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;line-height:1.2;color:var(--txt)}
+.mgp{font-size:8.5px;color:var(--dim)}
+.mgm{font-size:7.5px;color:var(--mut)}
+.hm0{background:var(--surf)}.hm1{background:#dce4ff}.hm2{background:#b8c8ff}.hm3{background:#fde090}.hm4{background:#f8b830}.hm5{background:#d4780a;color:#fff}
+
+/* BARS */
+.blist{display:flex;flex-direction:column;gap:8px}
+.bitem{display:flex;flex-direction:column;gap:3px}
+.bhd{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.blbl{font-size:11px;font-weight:500;color:var(--txt);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px}
+.bval{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);white-space:nowrap}
+.btrack{height:6px;background:var(--s3);border-radius:3px;overflow:hidden}
+.bfill{height:100%;border-radius:3px}
+
+/* PRICE BRACKETS */
+.pbrk{display:flex;gap:4px;margin-bottom:6px}
+.pbcol{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+.pbfill{width:100%;border-radius:3px 3px 0 0;min-height:3px}
+.pbpct{font-size:8.5px;font-weight:700;font-family:'IBM Plex Mono',monospace;color:var(--dim)}
+.pblbl{font-size:7.5px;color:var(--mut);text-align:center;font-family:'IBM Plex Mono',monospace;line-height:1.3}
+
+/* SPECS */
+.specs{display:flex;flex-wrap:wrap;gap:8px}
+.spec{display:flex;flex-direction:column;padding:8px 12px;border-radius:7px;
+  background:var(--s2);border:1px solid var(--brd);min-width:120px}
+.spec-l{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;margin-bottom:2px}
+.spec-v{font-size:12px;font-weight:600;color:var(--txt)}
+
+/* BRAND TABLE */
+.btbl{width:100%;border-collapse:collapse;font-size:12px}
+.btbl th{padding:5px 8px;text-align:left;font-size:8.5px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--mut);font-family:'IBM Plex Mono',monospace;border-bottom:1px solid var(--brd)}
+.btbl th.r{text-align:right}
+.btbl tr:hover td{background:var(--s2)}
+.btbl td{padding:6px 8px;border-bottom:1px solid rgba(210,215,230,.3);vertical-align:middle}
+.btbl td.r{text-align:right;font-family:'IBM Plex Mono',monospace}
+.brk{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;
+  border-radius:50%;font-size:9px;font-weight:800;background:var(--s3);color:var(--mut)}
+.brk.g{background:#fde090;color:#7a4400}.brk.s{background:#e4e6ea;color:#404055}.brk.b{background:#f0d4b0;color:#6a2c0a}
+.sb-fill{display:inline-block;height:5px;border-radius:3px;background:var(--a1);vertical-align:middle;margin-right:4px}
+
+/* DATA SOURCE */
+.datasrc{background:#f8f9ff;border:1px solid #c8d0f0;border-radius:8px;padding:10px 14px;
+  font-size:11px;color:#3a4070;margin-top:10px;display:flex;gap:8px;align-items:flex-start}
+.datasrc::before{content:'📊';flex-shrink:0;font-size:14px;margin-top:-1px}
+
+hr{border:none;border-top:1px solid var(--brd);margin:16px 0}
+.num{font-family:'IBM Plex Mono',monospace}
+.tag-aw{display:inline-flex;padding:1px 6px;border-radius:3px;font-size:9px;background:#dce4ff;color:#1a3490;font-family:'IBM Plex Mono',monospace;font-weight:600}
+
+/* PAGE BREAK HELPER */
+.model-anchor{scroll-margin-top:60px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-num">5</div>
+  <div class="htag">WB · Пижамы · Сезон Осень-Зима 2025</div>
+  <div class="htitle">5 конкурентоспособных<br>моделей пижам <em>для WB</em></div>
+  <div class="hsub">Обоснование на основе реальных данных продаж · 24/25 → 25/26</div>
+  <div class="hpills">
+    <div class="hpill">📊 Реальные данные WB</div>
+    <div class="hpill">📈 Динамика год к году</div>
+    <div class="hpill">🎯 Стадия тренда</div>
+    <div class="hpill">💰 Ценовая горка</div>
+    <div class="hpill">🏆 Конкурентная среда</div>
+  </div>
+</div>
+
+<nav class="model-nav">
+  <a class="mnav" href="#m1">01 · Рубашка+Штаны (хлопок)</a>
+  <a class="mnav" href="#m2">02 · Рубашка+Штаны (шёлк/вискоза)</a>
+  <a class="mnav" href="#m3">03 · Новогодний Family Look</a>
+  <a class="mnav" href="#m4">04 · Футболка+Штаны</a>
+  <a class="mnav" href="#m5">05 · Топ+Штаны (Скимс)</a>
+</nav>
+
+<div class="wrap" id="cards"></div>
+
+<script>
+const D = {"m1": {"d25": {"выручка": 913626576.0, "артикулов": 143, "продажи": 564564, "ср_чек": 2071, "мин_чек": 674, "макс_чек": 5179, "выр_на_арт": 6388997, "брендов": 73, "топ3_доля": 29.6, "упущенная": 18425551.849999998, "aw_доля": 70.7, "ценовые_сегменты": {"<1000": 6.8, "1000-1500": 33.2, "1500-2000": 24.8, "2000-2500": 7.5, "2500-3000": 10.9, "3000+": 16.3}, "по_месяцам": {"Авг": {"rev": 125678589.0, "chek": 1752}, "Сен": {"rev": 142408813.0, "chek": 1729}, "Окт": {"rev": 126783077.0, "chek": 1967}, "Ноя": {"rev": 133454069.0, "chek": 2219}, "Дек": {"rev": 154935300.0, "chek": 2833}, "Янв": {"rev": 230366728.0, "chek": 2038}}, "топ_бренды": [{"бренд": "Purrr", "выручка": 122801666, "доля": 13.4, "чек": 1226, "арт": 4}, {"бренд": "Pavlotti", "выручка": 79528799, "доля": 8.7, "чек": 1763, "арт": 8}, {"бренд": "OuMoona", "выручка": 68194501, "доля": 7.5, "чек": 3100, "арт": 10}, {"бренд": "Namari home", "выручка": 65587397, "доля": 7.2, "чек": 1833, "арт": 6}, {"бренд": "Modjimoda", "выручка": 49424009, "доля": 5.4, "чек": 1117, "арт": 2}], "составы": [{"состав": "Полиэстер", "доля": 27.3, "чек": 2022}, {"состав": "Хлопок", "доля": 27.1, "чек": 1862}, {"состав": "Хлопок+Полиэстер", "доля": 16.5, "чек": 1878}, {"состав": "Шелк+Полиэстер", "доля": 4.2, "чек": 3365}, {"состав": "Полиэстер+Хлопок", "доля": 3.9, "чек": 1707}], "лидер": "Purrr", "лидер_доля": 13.4}, "d24": {"выручка": 1020436537.0, "артикулов": 117, "продажи": 662674, "ср_чек": 1755, "мин_чек": 798, "макс_чек": 4164, "выр_на_арт": 8721680, "брендов": 68, "топ3_доля": 21.4, "упущенная": 9023303.900000002, "aw_доля": 77.6, "ценовые_сегменты": {"<1000": 3.5, "1000-1500": 37.8, "1500-2000": 29.8, "2000-2500": 16.4, "2500-3000": 10.0, "3000+": 2.6}, "по_месяцам": {"Авг": {"rev": 88486421.0, "chek": 1665}, "Сен": {"rev": 140260660.0, "chek": 1713}, "Окт": {"rev": 185199970.0, "chek": 1775}, "Ноя": {"rev": 139432017.0, "chek": 1601}, "Дек": {"rev": 334646347.0, "chek": 1790}, "Янв": {"rev": 132411122.0, "chek": 1937}}, "топ_бренды": [{"бренд": "CozyComfort / Purrr", "выручка": 88460698, "доля": 8.7, "чек": 1733, "арт": 4}, {"бренд": "Buybeauty", "выручка": 65727212, "доля": 6.4, "чек": 2304, "арт": 6}, {"бренд": "CozyComfort", "выручка": 63868558, "доля": 6.3, "чек": 1592, "арт": 4}, {"бренд": "PROBELIO", "выручка": 46980162, "доля": 4.6, "чек": 1363, "арт": 5}, {"бренд": "Panzitta", "выручка": 43470872, "доля": 4.3, "чек": 1085, "арт": 5}], "составы": [{"состав": "Полиэстер", "доля": 27.0, "чек": 1523}, {"состав": "Хлопок", "доля": 19.3, "чек": 1881}, {"состав": "Хлопок+Полиэстер", "доля": 13.1, "чек": 1375}, {"состав": "Шелк", "доля": 8.5, "чек": 2158}, {"состав": "Полиэстер+Хлопок", "доля": 5.3, "чек": 1776}], "лидер": "CozyComfort / Purrr", "лидер_доля": 8.7}}, "m2": {"d25": {"выручка": 187561402.0, "артикулов": 35, "продажи": 90424, "ср_чек": 2377, "мин_чек": 767, "макс_чек": 4998, "выр_на_арт": 5358897, "брендов": 25, "топ3_доля": 28.1, "упущенная": 6140319.5, "aw_доля": 64.0, "по_месяцам": {"Авг": {"rev": 29488976.0, "chek": 1964}, "Сен": {"rev": 38031835.0, "chek": 2071}, "Окт": {"rev": 27987851.0, "chek": 2383}, "Ноя": {"rev": 18670266.0, "chek": 2945}, "Дек": {"rev": 41444221.0, "chek": 3250}, "Янв": {"rev": 31938253.0, "chek": 1990}}, "топ_бренды": [{"бренд": "SOFASLEEP", "выручка": 17855122.0, "доля": 9.5, "чек": 1488, "арт": 2}, {"бренд": "Cosmica", "выручка": 17619202.0, "доля": 9.4, "чек": 1821, "арт": 3}, {"бренд": "Purrr", "выручка": 17309808.0, "доля": 9.2, "чек": 1220, "арт": 1}, {"бренд": "Safar home", "выручка": 16368392.0, "доля": 8.7, "чек": 2645, "арт": 1}, {"бренд": "Pavelinka", "выручка": 12288997.0, "доля": 6.6, "чек": 2436, "арт": 2}], "составы": [{"состав": "Шелк+Полиэстер", "доля": 20.7, "чек": 3365}, {"состав": "Хлопок+Вискоза", "доля": 18.7, "чек": 1398}, {"состав": "Шелк", "доля": 11.4, "чек": 2594}, {"состав": "Вискоза+Полиэстер", "доля": 11.3, "чек": 2610}, {"состав": "Вискоза", "доля": 10.3, "чек": 2330}], "ценовые_сегменты": {"<1000": 5.3, "1000-1500": 11.7, "1500-2000": 24.0, "2000-2500": 12.5, "2500-3000": 19.6, "3000+": 26.9}, "лидер": "SOFASLEEP", "лидер_доля": 9.5}, "d24": {"выручка": 309585808.0, "артикулов": 31, "продажи": 171117, "ср_чек": 1994, "мин_чек": 968, "макс_чек": 3465, "выр_на_арт": 9986639, "брендов": 22, "топ3_доля": 45.2, "упущенная": 4630649.73, "aw_доля": 73.6, "по_месяцам": {"Авг": {"rev": 31801067.0, "chek": 2029}, "Сен": {"rev": 49963710.0, "chek": 1877}, "Окт": {"rev": 58699547.0, "chek": 1922}, "Ноя": {"rev": 41967292.0, "chek": 1717}, "Дек": {"rev": 85436631.0, "chek": 2097}, "Янв": {"rev": 41717561.0, "chek": 2354}}, "топ_бренды": [{"бренд": "Buybeauty", "выручка": 64105241.0, "доля": 20.7, "чек": 2317, "арт": 5}, {"бренд": "ELUSORIX", "выручка": 40623080.0, "доля": 13.1, "чек": 1129, "арт": 3}, {"бренд": "Cosmica", "выручка": 35111439.0, "доля": 11.3, "чек": 2248, "арт": 3}, {"бренд": "SOFASLEEP", "выручка": 20674295.0, "доля": 6.7, "чек": 1568, "арт": 1}, {"бренд": "S’LOVERS", "выручка": 18116682.0, "доля": 5.9, "чек": 1930, "арт": 1}], "составы": [{"состав": "Шелк", "доля": 28.1, "чек": 2158}, {"состав": "Вискоза", "доля": 17.3, "чек": 2043}, {"состав": "Хлопок+Вискоза", "доля": 14.3, "чек": 1540}, {"состав": "Шелк+Полиэстр", "доля": 11.3, "чек": 2248}, {"состав": "Полиэстер+Вискоза", "доля": 10.4, "чек": 1148}], "ценовые_сегменты": {"<1000": 1.8, "1000-1500": 18.9, "1500-2000": 23.1, "2000-2500": 29.4, "2500-3000": 25.3, "3000+": 1.4}, "лидер": "Buybeauty", "лидер_доля": 20.7}}, "m3": {"d25": {"выручка": 210026106.0, "артикулов": 28, "продажи": 137048, "ср_чек": 1613, "мин_чек": 681, "макс_чек": 4205, "выр_на_арт": 7500932, "брендов": 18, "топ3_доля": 35.2, "упущенная": 2794716.88, "aw_доля": 99.0, "ценовые_сегменты": {"<1000": 8.4, "1000-1500": 54.7, "1500-2000": 21.3, "2000-2500": 2.2, "2500-3000": 4.3, "3000+": 9.1}, "по_месяцам": {"Авг": {"rev": 0.0, "chek": 0}, "Сен": {"rev": 2174609.0, "chek": 3188}, "Окт": {"rev": 7907925.0, "chek": 1970}, "Ноя": {"rev": 68080423.0, "chek": 1666}, "Дек": {"rev": 97616006.0, "chek": 1542}, "Янв": {"rev": 34247143.0, "chek": 1377}}, "топ_бренды": [{"бренд": "PROBELIO", "выручка": 31334817, "доля": 14.9, "чек": 1280, "арт": 2}, {"бренд": "MARFAWOMEN", "выручка": 21545212, "доля": 10.3, "чек": 1078, "арт": 3}, {"бренд": "Mia Cara", "выручка": 20969978, "доля": 10.0, "чек": 2933, "арт": 2}, {"бренд": "Home Style", "выручка": 17952452, "доля": 8.5, "чек": 1106, "арт": 2}, {"бренд": "Glamour House", "выручка": 17093315, "доля": 8.1, "чек": 1269, "арт": 1}], "составы": [{"состав": "Хлопок", "доля": 77.1, "чек": 1477}, {"состав": "Хлопок+Фланель", "доля": 8.9, "чек": 3060}, {"состав": "Хлопок+Хлопчатобумажная ткань", "доля": 5.1, "чек": 1247}, {"состав": "Хлопок+Натуральная хлопчатобумажная ткань", "доля": 3.0, "чек": 1188}, {"состав": "Хлопок+Полиэстер", "доля": 1.9, "чек": 1295}], "лидер": "PROBELIO", "лидер_доля": 14.9}, "d24": {"выручка": 249914825.0, "артикулов": 20, "продажи": 167171, "ср_чек": 1665, "мин_чек": 1075, "макс_чек": 4234, "выр_на_арт": 12495741, "брендов": 15, "топ3_доля": 59.8, "упущенная": 6224475.12, "aw_доля": 98.9, "ценовые_сегменты": {"<1000": 0.0, "1000-1500": 72.4, "1500-2000": 11.1, "2000-2500": 2.7, "2500-3000": 7.9, "3000+": 5.9}, "по_месяцам": {"Авг": {"rev": 0.0, "chek": 0}, "Сен": {"rev": 2744341.0, "chek": 1437}, "Окт": {"rev": 11027437.0, "chek": 2112}, "Ноя": {"rev": 55594664.0, "chek": 1472}, "Дек": {"rev": 169929832.0, "chek": 1776}, "Янв": {"rev": 10618551.0, "chek": 1140}}, "топ_бренды": [{"бренд": "PROBELIO", "выручка": 93366666, "доля": 37.4, "чек": 1437, "арт": 4}, {"бренд": "MARFAWOMEN", "выручка": 33960380, "доля": 13.6, "чек": 1295, "арт": 2}, {"бренд": "Mia Cara", "выручка": 22211474, "доля": 8.9, "чек": 3223, "арт": 1}, {"бренд": "NORSLAN", "выручка": 21809073, "доля": 8.7, "чек": 1186, "арт": 2}, {"бренд": "GlamourHouse", "выручка": 17203177, "доля": 6.9, "чек": 1490, "арт": 1}], "составы": [{"состав": "Хлопок", "доля": 66.7, "чек": 1564}, {"состав": "Хлопок+Фланель", "доля": 8.9, "чек": 3223}, {"состав": "Хлопок+Натуральная хлопчатобумажная ткань", "доля": 8.7, "чек": 1186}, {"состав": 0, "доля": 8.4, "чек": 1408}, {"состав": "Хлопок+Полиэстер", "доля": 6.0, "чек": 1710}], "лидер": "PROBELIO", "лидер_доля": 37.4}, "family": {"выручка": 95101938.0, "артикулов": 18, "продажи": 67463, "ср_чек": 1337, "мин_чек": 651, "макс_чек": 1805, "выр_на_арт": 5283441, "брендов": 6, "топ3_доля": 75.3, "упущенная": 3893839.38, "aw_доля": 100.0, "по_месяцам": {"Авг": {"rev": 0.0, "chek": 0}, "Сен": {"rev": 0.0, "chek": 0}, "Окт": {"rev": 0.0, "chek": 0}, "Ноя": {"rev": 32963325.0, "chek": 1385}, "Дек": {"rev": 62138613.0, "chek": 1290}, "Янв": {"rev": 0.0, "chek": 0}}, "топ_бренды": [{"бренд": "ЭЛИЗА", "выручка": 41334817.0, "доля": 43.5, "чек": 1075, "арт": 5}, {"бренд": "TRUE BALANCE", "выручка": 15740238.0, "доля": 16.6, "чек": 1321, "арт": 5}, {"бренд": "Cecile", "выручка": 14574194.0, "доля": 15.3, "чек": 1662, "арт": 3}, {"бренд": "ELIZA.ART", "выручка": 10845583.0, "доля": 11.4, "чек": 1467, "арт": 3}, {"бренд": "Sofia_trikotaz", "выручка": 9823311.0, "доля": 10.3, "чек": 1373, "арт": 1}], "составы": [{"состав": "Хлопок", "доля": 95.8, "чек": 1340}, {"состав": "Хлопок+Полиэстер", "доля": 4.2, "чек": 1295}], "ценовые_сегменты": {"<1000": 37.3, "1000-1500": 23.0, "1500-2000": 39.7, "2000-2500": 0.0, "2500-3000": 0.0, "3000+": 0.0}, "лидер": "ЭЛИЗА", "лидер_доля": 43.5}}, "m4": {"d25": {"выручка": 328077562.0, "артикулов": 50, "продажи": 272298, "ср_чек": 1402, "мин_чек": 589, "макс_чек": 2446, "выр_на_арт": 6561551, "брендов": 30, "топ3_доля": 30.8, "упущенная": 5719671.449999999, "aw_доля": 76.9, "ценовые_сегменты": {"<1000": 32.0, "1000-1500": 29.5, "1500-2000": 24.7, "2000-2500": 13.8, "2500-3000": 0.0, "3000+": 0.0}, "по_месяцам": {"Авг": {"rev": 39146635.0, "chek": 1294}, "Сен": {"rev": 36755930.0, "chek": 1268}, "Окт": {"rev": 46844892.0, "chek": 1391}, "Ноя": {"rev": 64192637.0, "chek": 1369}, "Дек": {"rev": 69316117.0, "chek": 1541}, "Янв": {"rev": 71821351.0, "chek": 1534}}, "топ_бренды": [{"бренд": "FreeSelf", "выручка": 35742812, "доля": 10.9, "чек": 875, "арт": 7}, {"бренд": "AMA collection", "выручка": 34927484, "доля": 10.6, "чек": 1468, "арт": 3}, {"бренд": "StreamLove", "выручка": 30358577, "доля": 9.3, "чек": 930, "арт": 1}, {"бренд": "Glamour House", "выручка": 29242128, "доля": 8.9, "чек": 1572, "арт": 1}, {"бренд": "QUEENKAT", "выручка": 26256261, "доля": 8.0, "чек": 2198, "арт": 2}], "составы": [{"состав": "Хлопок", "доля": 73.2, "чек": 1301}, {"состав": "Вискоза", "доля": 8.6, "чек": 1533}, {"состав": "Акрил+Вискоза", "доля": 8.2, "чек": 1546}, {"состав": "Вискоза+Полиэстер", "доля": 3.4, "чек": 2322}, {"состав": "Хлопок+Полиэстер", "доля": 2.5, "чек": 1312}], "лидер": "FreeSelf", "лидер_доля": 10.9}, "d24": {"выручка": 181362136.0, "артикулов": 24, "продажи": 135749, "ср_чек": 1384, "мин_чек": 622, "макс_чек": 2851, "выр_на_арт": 7556756, "брендов": 13, "топ3_доля": 61.4, "упущенная": 398851.78, "aw_доля": 81.9, "ценовые_сегменты": {"<1000": 18.9, "1000-1500": 44.8, "1500-2000": 17.2, "2000-2500": 11.2, "2500-3000": 8.0, "3000+": 0.0}, "по_месяцам": {"Авг": {"rev": 15440538.0, "chek": 1031}, "Сен": {"rev": 17440470.0, "chek": 1292}, "Окт": {"rev": 34981151.0, "chek": 1268}, "Ноя": {"rev": 26041077.0, "chek": 1661}, "Дек": {"rev": 50165202.0, "chek": 1653}, "Янв": {"rev": 37293698.0, "chek": 1437}}, "топ_бренды": [{"бренд": "ACACIA HONEY", "выручка": 62321966, "доля": 34.4, "чек": 1399, "арт": 4}, {"бренд": "FreeSelf", "выручка": 28671802, "доля": 15.8, "чек": 763, "арт": 6}, {"бренд": "ORMANCO", "выручка": 20395459, "доля": 11.2, "чек": 2460, "арт": 1}, {"бренд": "DEREK MOON", "выручка": 17705404, "доля": 9.8, "чек": 1514, "арт": 2}, {"бренд": "Bonleto", "выручка": 14358463, "доля": 7.9, "чек": 2436, "арт": 1}], "составы": [{"состав": "Хлопок", "доля": 69.9, "чек": 1164}, {"состав": "Рибана+Хлопок", "доля": 11.2, "чек": 2460}, {"состав": "Вискоза", "доля": 10.9, "чек": 1959}, {"состав": "Хлопок+Полиэстер", "доля": 3.5, "чек": 1530}, {"состав": 0, "доля": 2.4, "чек": 1642}], "лидер": "ACACIA HONEY", "лидер_доля": 34.4}}, "m5": {"d25": {"выручка": 71966339.0, "артикулов": 15, "продажи": 44861, "ср_чек": 1760, "мин_чек": 947, "макс_чек": 3338, "выр_на_арт": 4797756, "брендов": 13, "топ3_доля": 55.6, "упущенная": 109820.28, "aw_доля": 72.8, "ценовые_сегменты": {"<1000": 6.0, "1000-1500": 34.7, "1500-2000": 24.1, "2000-2500": 28.6, "2500-3000": 4.1, "3000+": 2.5}, "по_месяцам": {"Авг": {"rev": 5963907.0, "chek": 1943}, "Сен": {"rev": 13642386.0, "chek": 1449}, "Окт": {"rev": 14851691.0, "chek": 1672}, "Ноя": {"rev": 13921767.0, "chek": 1884}, "Дек": {"rev": 13904064.0, "chek": 2191}, "Янв": {"rev": 9682524.0, "chek": 1526}}, "топ_бренды": [{"бренд": "MARFAWOMEN", "выручка": 18845551, "доля": 26.2, "чек": 2044, "арт": 2}, {"бренд": "Yorkent", "выручка": 11985589, "доля": 16.7, "чек": 1792, "арт": 2}, {"бренд": "Амели.", "выручка": 9190654, "доля": 12.8, "чек": 2479, "арт": 1}, {"бренд": "Mirell", "выручка": 4688486, "доля": 6.5, "чек": 1268, "арт": 1}, {"бренд": "AugustRush", "выручка": 4220932, "доля": 5.9, "чек": 996, "арт": 1}], "составы": [{"состав": "Хлопок", "доля": 52.3, "чек": 1947}, {"состав": "Полиэстер", "доля": 27.6, "чек": 1196}, {"состав": "Вискоза", "доля": 20.1, "чек": 2057}], "лидер": "MARFAWOMEN", "лидер_доля": 26.2}, "d24": {"выручка": 6065863.0, "артикулов": 1, "продажи": 1815, "ср_чек": 3353, "мин_чек": 3326, "макс_чек": 3405, "выр_на_арт": 6065863, "брендов": 1, "топ3_доля": 100.0, "упущенная": 364054.32, "aw_доля": 43.9, "ценовые_сегменты": {"<1000": 0.0, "1000-1500": 0.0, "1500-2000": 0.0, "2000-2500": 0.0, "2500-3000": 0.0, "3000+": 100.0}, "по_месяцам": {"Авг": {"rev": 1516893.0, "chek": 3328}, "Сен": {"rev": 1885345.0, "chek": 3326}, "Окт": {"rev": 2663625.0, "chek": 3405}, "Ноя": {"rev": 0.0, "chek": 0}, "Дек": {"rev": 0.0, "chek": 0}, "Янв": {"rev": 0.0, "chek": 0}}, "топ_бренды": [{"бренд": "EMMANUEL BRAND", "выручка": 6065863, "доля": 100.0, "чек": 3353, "арт": 1}], "составы": [{"состав": "Хлопок", "доля": 100.0, "чек": 3353}], "лидер": "EMMANUEL BRAND", "лидер_доля": 100.0}, "d25b": {"выручка": 48227701.0, "артикулов": 6, "продажи": 21507, "ср_чек": 2352, "мин_чек": 1238, "макс_чек": 3647, "выр_на_арт": 8037950, "брендов": 4, "топ3_доля": 95.4, "упущенная": 0.0, "aw_доля": 49.5, "ценовые_сегменты": {"<1000": 0.0, "1000-1500": 16.1, "1500-2000": 6.2, "2000-2500": 11.4, "2500-3000": 47.7, "3000+": 18.7}, "по_месяцам": {"Авг": {"rev": 12485583.0, "chek": 2269}, "Сен": {"rev": 11877693.0, "chek": 1932}, "Окт": {"rev": 6218532.0, "chek": 2613}, "Ноя": {"rev": 2669396.0, "chek": 2999}, "Дек": {"rev": 3078920.0, "chek": 3647}, "Янв": {"rev": 11897577.0, "chek": 2244}}, "топ_бренды": [{"бренд": "I am pijama", "выручка": 20929991, "доля": 43.4, "чек": 2969, "арт": 2}, {"бренд": "kaóko", "выручка": 14352156, "доля": 29.8, "чек": 2636, "арт": 1}, {"бренд": "БЕЗМЯТЕЖНОСТЬ", "выручка": 10734395, "доля": 22.3, "чек": 1382, "арт": 2}, {"бренд": "L'anima", "выручка": 2211159, "доля": 4.6, "чек": 2024, "арт": 1}], "составы": [{"состав": "Хлопок", "доля": 43.1, "чек": 2760}, {"состав": "Хлопок+Качество компакт-пенье", "доля": 29.8, "чек": 2636}, {"состав": "Полиэстер", "доля": 22.3, "чек": 1382}, {"состав": "Хлопок+Брюки полиэстр", "доля": 4.9, "чек": 3490}], "лидер": "I am pijama", "лидер_доля": 43.4}, "d24b": {"выручка": 29558357.0, "артикулов": 6, "продажи": 13269, "ср_чек": 2331, "мин_чек": 1585, "макс_чек": 2909, "выр_на_арт": 4926393, "брендов": 5, "топ3_доля": 85.4, "упущенная": 0.0, "aw_доля": 90.8, "ценовые_сегменты": {"<1000": 0.0, "1000-1500": 0.0, "1500-2000": 35.0, "2000-2500": 15.8, "2500-3000": 49.2, "3000+": 0.0}, "по_месяцам": {"Авг": {"rev": 1353671.0, "chek": 2118}, "Сен": {"rev": 1356096.0, "chek": 1941}, "Окт": {"rev": 1601780.0, "chek": 2880}, "Ноя": {"rev": 3040898.0, "chek": 2909}, "Дек": {"rev": 17192874.0, "chek": 2132}, "Янв": {"rev": 5013038.0, "chek": 2602}}, "топ_бренды": [{"бренд": "Rooboo", "выручка": 12952125, "доля": 43.8, "чек": 2759, "арт": 1}, {"бренд": "MissKriss", "выручка": 8868912, "доля": 30.0, "чек": 1897, "арт": 2}, {"бренд": "BEDMOOD", "выручка": 3425773, "доля": 11.6, "чек": 1967, "арт": 1}, {"бренд": "JOLIVE", "выручка": 2709767, "доля": 9.2, "чек": 2030, "арт": 1}, {"бренд": "Two Pistols", "выручка": 1601780, "доля": 5.4, "чек": 2880, "арт": 1}], "составы": [{"состав": 0, "доля": 90.8, "чек": 2417}, {"состав": "Полиэстер", "доля": 9.2, "чек": 2030}], "лидер": "Rooboo", "лидер_доля": 43.8}}};
+const MO=['8','9','10','11','12','1'];
+const MN={'8':'Авг','9':'Сен','10':'Окт','11':'Ноя','12':'Дек','1':'Янв'};
+const COLORS=['#2255d4','#7c3aed','#0d9e6e','#d4780a','#c43030','#0891c0','#6d28d9','#0f766e'];
+
+const f=n=>{if(!n||n==0)return'—';if(n>=1e9)return(n/1e9).toFixed(2)+'млрд';if(n>=1e6)return(n/1e6).toFixed(1)+'млн';if(n>=1e3)return Math.round(n/1e3)+'тыс';return Math.round(n).toLocaleString('ru')};
+const fr=n=>n?Math.round(n).toLocaleString('ru')+'₽':'—';
+const fp=(a,b)=>b&&b>0?`${((a-b)/b*100)>0?'+':''}${((a-b)/b*100).toFixed(0)}%`:'NEW';
+const hlvl=(v,mx)=>{if(!v||v==0)return 0;const r=v/mx;if(r>.75)return 5;if(r>.5)return 4;if(r>.3)return 3;if(r>.12)return 2;return 1};
+
+function monthGrid(monthly){
+  if(!monthly)return'';
+  const vals=MO.map(m=>monthly[MN[m]]?.rev||0);
+  const mx=Math.max(...vals);
+  let h=`<div class="mgrid">`;
+  MO.forEach(m=>h+=`<div class="mgh">${MN[m]}</div>`);
+  MO.forEach(m=>{
+    const d=monthly[MN[m]]||{};const v=d.rev||0;const lv=hlvl(v,mx);
+    h+=`<div class="mgc hm${lv}">
+      <div class="mgr">${v?f(v):'—'}</div>
+      ${d.chek?`<div class="mgp">${d.chek.toLocaleString('ru')}₽</div>`:''}
+    </div>`;
+  });
+  h+=`</div>`;
+  // Peak month
+  const pkIdx=vals.indexOf(Math.max(...vals));
+  const pkM=MN[MO[pkIdx]];
+  const awShare=((vals[2]+vals[3]+vals[4]+vals[5])/(vals.reduce((a,b)=>a+b,0)||1)*100).toFixed(0);
+  h+=`<div class="datasrc">Пик продаж: <b>${pkM}</b> · Осенне-зимний период (окт–янв): <b>${awShare}%</b> выручки</div>`;
+  return h;
+}
+
+function priceBars(seg){
+  if(!seg)return'';
+  const vals=Object.values(seg);
+  const mx=Math.max(...vals);
+  const dom=Object.entries(seg).reduce((a,b)=>b[1]>a[1]?b:a,['',0]);
+  let h=`<div style="height:70px;display:flex;align-items:flex-end;gap:4px;margin-bottom:5px">`;
+  Object.entries(seg).forEach(([lbl,v],i)=>{
+    const hpx=mx?Math.max(3,Math.round(v/mx*60)):3;
+    const isDom=lbl===dom[0];
+    h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px">
+      <div style="font-size:8.5px;font-weight:${isDom?'700':'400'};font-family:'IBM Plex Mono',monospace;color:${isDom?'var(--orange)':'var(--dim)'}">${v}%</div>
+      <div style="width:100%;height:${hpx}px;border-radius:3px 3px 0 0;background:${isDom?'#d4780a':COLORS[i%COLORS.length]};opacity:${isDom?1:.7}"></div>
+      <div style="font-size:7.5px;color:var(--mut);text-align:center;font-family:'IBM Plex Mono',monospace;line-height:1.2">${lbl}</div>
+    </div>`;
+  });
+  h+=`</div>`;
+  h+=`<div class="datasrc">Основной диапазон: <b>${dom[0]}₽</b> — ${dom[1]}% выручки</div>`;
+  return h;
+}
+
+function brandBars(brands){
+  if(!brands||!brands.length)return'';
+  const mx=Math.max(...brands.map(b=>b.выручка||0));
+  return `<table class="btbl"><thead><tr>
+    <th>#</th><th>Бренд</th><th class="r">Выручка</th><th class="r">Доля</th><th class="r">Ср.чек</th><th class="r">Арт.</th>
+  </tr></thead><tbody>`+
+  brands.map((b,i)=>`<tr>
+    <td><span class="brk ${i==0?'g':i==1?'s':i==2?'b':''}">${i+1}</span></td>
+    <td style="font-weight:600">${b.бренд}</td>
+    <td class="r">${f(b.выручка)}</td>
+    <td class="r"><div style="display:inline-flex;align-items:center;gap:3px">
+      <div class="sb-fill" style="width:${Math.min(60,b.доля*1.5)}px"></div><span style="font-size:10px;color:var(--dim)">${b.доля}%</span></div></td>
+    <td class="r">${fr(b.чек)}</td>
+    <td class="r">${b.арт}</td>
+  </tr>`).join('')+`</tbody></table>`;
+}
+
+function compBars(comps){
+  if(!comps||!comps.length)return'<div style="color:var(--mut);font-size:11px">Нет данных</div>';
+  const mx=Math.max(...comps.map(c=>c.доля||0));
+  return `<div class="blist">`+comps.map((c,i)=>`
+    <div class="bitem">
+      <div class="bhd">
+        <span class="blbl" title="${c.состав}">${c.состав}</span>
+        <span class="bval">${c.доля}% · ${fr(c.чек)}</span>
+      </div>
+      <div class="btrack"><div class="bfill" style="width:${mx?(c.доля/mx*100).toFixed(0):0}%;background:${COLORS[i%COLORS.length]}"></div></div>
+    </div>`).join('')+`</div>`;
+}
+
+const MODELS = [
+{
+  id:'m1', color:'#1a3fd4', gradient:'linear-gradient(135deg,#0d1830,#1a2d80)',
+  num:'01', cat:'Домашний тип', name:'Рубашка + Штаны', subname:'Хлопок / Муслин / Хлопок+Полиэстер',
+  trend:'peak', trendLabel:'Пик рынка — насыщение',
+  tags:['🏆 Лидер рынка','🔄 Всесезонный','🟢 73 бренда','💰 Выр/карт 6.4млн'],
+  d25: D.m1.d25, d24: D.m1.d24,
+  почему: `<b>Крупнейшая ниша категории — 914млн₽</b> выручки за сезон. Конкурентный рынок: 73 бренда, топ-3 = 29.6% — это значит рынок не монополизирован и у нового игрока есть шанс при правильном продукте. Выручка на карточку <b>6.4млн</b> — сильный показатель. <br><br>AW-сезон даёт 70.7% выручки. Хлопок и муслин — основной запрос покупателя на осень. Несмотря на небольшое снижение -10.5% год к году, <b>объём ниши настолько велик</b>, что даже 1% рынка = 9.1млн выручки.`,
+  риски:`Насыщение — ниша снижается -10.5%. Очень много похожих артикулов. Необходим уникальный принт, состав или крой чтобы выделиться. Высокая конкуренция = давление на цену.`,
+  стадия:`Пик / начало насыщения. Ниша работает стабильно несколько лет, объём огромный, но роста нет. Стратегия: <b>занять нишу через уникальный продукт</b> — муслин, принт, оверсайз.`,
+  данные:`Анализ WB сезона AW 25/26: 73 бренда, 143 артикула, 914млн выручки. Сравнение с AW 24/25: -10.5% по выручке. Упущенная выручка: низкая — спрос хорошо закрыт.`,
+  спека:{цена:'2000–3500₽',состав:'Хлопок 100%, Муслин (хлопок), Хлопок+вискоза',цвет:'Белый, Бежевый, Шоколадный, Графит',длина:'Рубашка оверсайз + прямые штаны',сезон:'Сентябрь–Февраль',особенность:'Принт / натуральный состав / длинная рубашка'},
+},
+{
+  id:'m2', color:'#7c3aed', gradient:'linear-gradient(135deg,#1a0a40,#4a1080)',
+  num:'02', cat:'Домашний тип — Премиум сегмент', name:'Рубашка + Штаны', subname:'Японский шёлк / Вискоза / Шёлк+ПЭ',
+  trend:'grow', trendLabel:'Рост — активный тренд',
+  tags:['💎 Чек 2377₽','📈 Растёт','🟢 25 брендов','✨ Премиум сегмент'],
+  d25: D.m2.d25, d24: D.m2.d24,
+  почему:`Средний чек <b>2377₽</b> — на 15% выше чем в хлопке. Выручка <b>188млн₽</b> при всего 35 артикулах — это значит выручка на карточку <b>5.4млн</b>. 25 брендов, топ-3 = 28% — рынок открыт и не монополизирован. <br><br>Шёлк+ПЭ и вискоза+ПЭ дают чек <b>2600–3365₽</b>. Растущий запрос — «instagram-пижама», подарочный сегмент, женственный крой. <b>Отдельная целевая аудитория</b>: покупатель не сравнивает с хлопковой, выбирает за внешний вид и тактильность.`,
+  риски:`Более высокий входной ценовой порог. Требует качественной карточки и профессиональных фото. Состав сложнее в производстве. Меньший объём ниши vs хлопок.`,
+  стадия:`Активный рост. Запрос на шёлковые пижамы стабильно растёт 2-3 года. Тренд поддерживается Pinterest и Instagram. Ниша ещё не насыщена при правильном ценовом позиционировании.`,
+  данные:`WB AW 25/26: шёлк/вискоза в ниш Рубашка+Штаны: 188млн, 35 артикулов, 25 брендов. Шёлк+ПЭ: доля 20.7%, ср. чек 3365₽. Вискоза+ПЭ: 11.3%, ср. чек 2610₽. Вискоза: 10.3%, ср. чек 2330₽.`,
+  спека:{цена:'2200–4500₽',состав:'Шёлк+Полиэстер, Вискоза+ПЭ, Вискоза 100%',цвет:'Молочный, Бежевый, Чёрный, Пудровый, Шоколадный',крой:'Приталенная рубашка на пуговицах + широкие штаны',сезон:'Октябрь–Февраль (пик дек–янв)',особенность:'Глубокий V-вырез / кружево / атласная отделка'},
+},
+{
+  id:'m3', color:'#c43030', gradient:'linear-gradient(135deg,#2a0808,#7a1010)',
+  num:'03', cat:'Новогодний тип — Family Look + Мужская', name:'Новогодний Family Look', subname:'Рубашка+Штаны · Женский + Мужской + Детский',
+  trend:'grow', trendLabel:'Рост — сезонный хит',
+  tags:['🎄 Family Look','👨‍👩‍👧 Мужская+Женская','💰 Выр/карт 7.5млн','🎁 Подарочный'],
+  d25: D.m3.d25, d24: D.m3.d24,
+  почему:`Family Look — <b>отдельный и растущий сегмент</b> внутри новогодней категории. 95млн выручки только на семейные комплекты. Мужская часть Family Look — это готовый вход в мужскую нишу <b>без создания отдельного продукта</b>. Покупатель покупает комплект сразу, средний чек выше. <br><br>Новогодняя ниша Рубашка+Штаны: <b>210млн₽, выручка на карточку 7.5млн</b> — лучший показатель во всех новогодних. 18 брендов, топ-3 = 35.2%. Декабрь — пик. Запуск в сентябре.`,
+  риски:`Строго сезонный продукт — декабрь и январь. Остатки сложно ликвидировать. Требует производства нескольких размерных линеек (женский + мужской + детский). Тайминг запуска критичен.`,
+  стадия:`Устойчивый рост. Family Look — сформировавшийся тренд, стабильно растёт 3+ года. В 2025 потребитель всё больше ищет семейные комплекты на праздники. Стадия: <b>активный рост с ежегодным пиком</b>.`,
+  данные:`WB AW 25/26: новогодняя Рубашка+Штаны: 210млн, 28 арт, 18 брендов. Family Look артикулов: 18, выручка: 95млн, ср. чек: 1337₽. Лидер ниши: ${D.m3.d25?.лидер||'—'} (${D.m3.d25?.лидер_доля||0}% рынка). AW-сезон: 99%.`,
+  спека:{цена:'2500–5000₽ (комплект)','цена_ед':'1200–2000₽ (женский), 1200–1800₽ (мужской)',состав:'Хлопок 100%, Хлопок+Фланель',цвет:'Красный+белый клетка, Красный с принтом оленей, Зелёный в клетку',принт:'Клетка Buffalo / Олени / Снежинки / Надписи',сезон:'Ноябрь–Январь',особенность:'3-5 позиций в карточке: жен+муж+дет, продаётся комплектом'},
+},
+{
+  id:'m4', color:'#0d9e6e', gradient:'linear-gradient(135deg,#042a1a,#0a5c38)',
+  num:'04', cat:'Домашний тип — Быстрый рост', name:'Футболка + Штаны', subname:'Хлопок / Хлопок+Вискоза',
+  trend:'grow', trendLabel:'Быстрый рост +81%',
+  tags:['📈 Рост +81%','❄️ AW 77%','🟢 Открытый рынок','💰 Выр/карт 6.6млн'],
+  d25: D.m4.d25, d24: D.m4.d24,
+  почему:`Самый быстрорастущий базовый тип (+81% год к году). Рынок <b>полностью открыт</b>: 31 бренд, топ-3 = 30.8% — это конкурентная среда без монополиста. Выручка на карточку <b>6.6млн</b> — выше чем в Рубашка+Штаны. <br><br>AW-сезон 77% — ярко выраженный осенне-зимний товар. <b>Число брендов выросло с 13 до 31</b> за год — рынок активно заполняется, значит покупательский спрос превышает предложение.`,
+  риски:`Быстрый рост конкуренции — в следующем сезоне 50+ брендов. Нужно зайти сейчас. Ср. чек относительно невысокий (1402₽) — важно правильно выстроить позиционирование в сегменте 1900–2500₽.`,
+  стадия:`Активный рост. Ниша в фазе роста спроса — покупатель открыл для себя футболка+штаны как базовый домашний комплект. Аналог: как Рубашка+Штаны 5 лет назад. <b>Заходить сейчас — до насыщения</b>.`,
+  данные:`WB AW 25/26: Домашний Футболка+Штаны: 328млн, 50 арт, 31 бренд. Рост vs 24/25: +81%. Выр/карт: 6.6млн. AW-доля: 77%. Топ-3: 30.8% — конкурентный рынок.`,
+  спека:{цена:'1900–2800₽',состав:'Хлопок 100%, Хлопок+Вискоза, Хлопок рубчик',цвет:'Белый, Чёрный, Бежевый, Серый, Шоколадный',крой:'Оверсайз футболка + прямые штаны с принтом или однотон',сезон:'Сентябрь–Февраль (пик янв)',особенность:'Принт на кармане / рукаве, необычный кант или строчка'},
+},
+{
+  id:'m5', color:'#7c3aed', gradient:'linear-gradient(135deg,#100830,#3d1060)',
+  num:'05', cat:'Скимс стиль — Новая ниша', name:'Топ + Штаны', subname:'Рубчик / Вискоза+ПЭ — Скимс крой',
+  trend:'new', trendLabel:'Зарождение — входить сейчас',
+  tags:['🔥 Рост +1086%','🆕 Формирующийся тренд','💎 Чек 1760–2352₽','🟢 13 брендов'],
+  d25: D.m5.d25, d24: D.m5.d24,
+  d25b: D.m5.d25b, d24b: D.m5.d24b,
+  почему:`Взрывной рост <b>+1086%</b> — ниша только начала формироваться в 25/26. Скимс-стиль (облегающий трикотаж, рубчик, нейтральные оттенки) — это <b>TikTok-тренд пришедший на WB</b>. 13 брендов, нет монополиста. Домашний Топ+Штаны показывает выручку на карточку <b>8.0млн</b> при среднем чеке 2352₽ — самые высокие показатели среди всех типов. <br><br>Покупатель ищет: облегающий лонгслив+штаны из рубчика, нейтральные цвета, минималистичный дизайн, без принтов.`,
+  риски:`Маленький объём рынка пока (72–48млн). Спрос ещё формируется — возможна нишевость. Требует качественных фото в стиле Pinterest/TikTok для карточки. Состав рубчик сложнее в производстве.`,
+  стадия:`Зарождение / начало роста. Ниша в начале жизненного цикла — аналог того, где была Скимс-одежда 2 года назад. <b>Идеальный момент для входа: ниша заметна, но свободна</b>.`,
+  данные:`WB AW 25/26: Скимс Лонгслив+Штаны: 72млн, 15 арт, 13 брендов, рост +1086%. Домашний Топ+Штаны: 48млн, 6 арт, выр/карт 8млн, ср. чек 2352₽. Топ-3 доля: 55.6% — олигополия без явного лидера.`,
+  спека:{цена:'1900–3200₽',состав:'Рубчик (хлопок), Вискоза+ПЭ, Модал',цвет:'Молочный, Какао, Бежевый, Угольный, Серо-зелёный',крой:'Облегающий лонгслив с длинным рукавом + прямые широкие брюки',сезон:'Октябрь–Февраль',особенность:'Минималистичный дизайн, без принтов, нейтральные цвета, "as seen on Pinterest"'},
+},
+];
+
+function buildModel(m){
+  const d25=m.d25||{};const d24=m.d24||{};
+  const growth=d24.выручка>0?((d25.выручка-d24.выручка)/d24.выручка*100):null;
+  const gStr=growth!=null?(growth>0?'+':'')+growth.toFixed(0)+'%':'NEW';
+  const gCls=growth==null?'hi':growth>20?'pos':growth<0?'neg':'warn';
+  const trendCls='trend-'+(m.trend||'stable');
+
+  return `<div class="mcard model-anchor" id="${m.id}">
+    <div class="mhead" style="background:${m.gradient}">
+      <div class="mhead-inner">
+        <span class="mnum" style="background:rgba(255,255,255,.2)">${m.num}</span>
+        <div class="minfo">
+          <div class="mcat">${m.cat}</div>
+          <div class="mname">${m.name}</div>
+          <div class="msubname">${m.subname}</div>
+          <div class="mtags">${m.tags.map(t=>`<span class="mtag">${t}</span>`).join('')}</div>
+          <div class="trend ${trendCls}" style="margin-top:10px">📍 Стадия тренда: ${m.trendLabel}</div>
+        </div>
+      </div>
+      <div class="kstrip">
+        <div class="kitem"><div class="kl">Рост год к году</div><div class="kv ${gCls}">${gStr}</div></div>
+        <div class="kitem"><div class="kl">Ср. чек</div><div class="kv">${fr(d25.ср_чек)}</div></div>
+        <div class="kitem"><div class="kl">Выр/карточку</div><div class="kv hi">${f(d25.выр_на_арт)}</div></div>
+        <div class="kitem"><div class="kl">Брендов</div><div class="kv">${d25.брендов||'—'}</div></div>
+        <div class="kitem"><div class="kl">Топ-3 доля</div><div class="kv ${(d25.топ3_доля||0)<35?'pos':(d25.топ3_доля||0)>70?'neg':'warn'}">${d25.топ3_доля||0}%</div></div>
+        <div class="kitem"><div class="kl">AW-сезон</div><div class="kv">${d25.aw_доля||0}%</div></div>
+      </div>
+    </div>
+
+    <div class="mbody">
+
+      <div class="g2 sec">
+        <div class="box box-green"><div class="box-t">💡 Почему этот продукт</div><p>${m.почему}</p></div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="box box-yel"><div class="box-t">📍 Стадия тренда и стратегия</div><p>${m.стадия}</p></div>
+          <div class="box box-red"><div class="box-t">⚠️ Риски</div><p>${m.риски}</p></div>
+        </div>
+      </div>
+
+      <div class="sec"><div class="sec-t">Сезонность — выручка по месяцам (25/26)</div>
+        ${monthGrid(d25.по_месяцам)}
+      </div>
+
+      <div class="g2 sec">
+        <div>
+          <div class="sec-t">Ценовая горка — доля выручки по диапазонам</div>
+          ${priceBars(d25.ценовые_сегменты)}
+        </div>
+        <div>
+          <div class="sec-t">Состав — что продаётся</div>
+          ${compBars(d25.составы)}
+        </div>
+      </div>
+
+      <div class="sec"><div class="sec-t">Конкуренты в нише — топ бренды</div>
+        ${brandBars(d25.топ_бренды)}
+        <div class="datasrc" style="margin-top:8px">Лидер: <b>${d25.лидер||'—'}</b> (${d25.лидер_доля||0}% рынка) · Всего брендов: ${d25.брендов||'—'} · ${d25.топ3_доля<35?'✅ Конкурентный рынок':d25.топ3_доля>70?'🔴 Сильная концентрация':'🟡 Олигополия'}</div>
+      </div>
+
+      <div class="sec"><div class="sec-t">На основе каких данных сделан вывод</div>
+        <div class="box box-blue"><div class="box-t">📊 Источник данных</div><p>${m.данные}</p></div>
+      </div>
+
+      <div class="sec"><div class="sec-t">Рекомендации по модели</div>
+        <div class="specs">${Object.entries(m.спека).map(([k,v])=>`
+          <div class="spec"><div class="spec-l">${k}</div><div class="spec-v">${v}</div></div>`).join('')}
+        </div>
+      </div>
+
+      ${m.id==='m5'&&m.d25b?`
+      <hr>
+      <div class="sec"><div class="sec-t">Доп. данные: Домашний Топ+Штаны (ближайший аналог)</div>
+        <div class="g2">
+          <div class="box"><div class="box-t">Ключевые метрики</div>
+            <ul>
+              <li>Выручка: <b>${f(m.d25b.выручка)}</b></li>
+              <li>Выр/карточку: <b>${f(m.d25b.выр_на_арт)}</b> — лучший показатель в категории</li>
+              <li>Ср. чек: <b>${fr(m.d25b.ср_чек)}</b></li>
+              <li>Брендов: <b>${m.d25b.брендов}</b> — практически свободная ниша</li>
+            </ul>
+          </div>
+          <div>${monthGrid(m.d25b.по_месяцам)}</div>
+        </div>
+      </div>`:``}
+
+    </div>
+  </div>`;
+}
+
+document.getElementById('cards').innerHTML=MODELS.map(buildModel).join('');
+</script>
+
+<!-- ═══ UNICORNS & KEYWORD SECTION ═══ -->
+<style>
+.uni-hero{background:linear-gradient(135deg,#0a1a10,#0d4020);padding:36px 28px 30px;color:#fff;position:relative;overflow:hidden}
+.uni-hero::before{content:'🦄';position:absolute;right:20px;top:-10px;font-size:140px;opacity:.08;pointer-events:none}
+.kw-card{background:var(--surf);border:1px solid var(--brd);border-radius:12px;margin-bottom:16px;overflow:hidden;box-shadow:var(--sh)}
+.kw-head{padding:14px 18px;border-bottom:1px solid var(--brd);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.kw-badge{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900;padding:4px 12px;border-radius:6px;color:#fff}
+.kw-stats{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
+.kw-stat{display:flex;flex-direction:column;align-items:center;min-width:70px}
+.kw-stat-l{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace}
+.kw-stat-v{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:800;color:var(--txt)}
+.kw-stat-v.pos{color:var(--green)}.kw-stat-v.neg{color:var(--red)}.kw-stat-v.new{color:#7c3aed}
+.kw-body{padding:14px 18px}
+.uni-item{border:1px solid var(--brd);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.uni-head{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;padding:10px 12px;background:var(--s2);border-bottom:1px solid var(--brd)}
+.uni-rank{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:10px;font-weight:800;font-family:'Unbounded',sans-serif;background:var(--s3);color:var(--mut)}
+.uni-rank.g{background:#fde090;color:#7a4400}.uni-rank.s{background:#e4e6ea;color:#404055}.uni-rank.b{background:#f0d4b0;color:#6a2c0a}
+.uni-meta{display:flex;flex-direction:column;gap:2px}
+.uni-name{font-weight:700;font-size:12px;line-height:1.3}
+.uni-sub{font-size:10px;color:var(--dim);display:flex;gap:8px;flex-wrap:wrap}
+.uni-kpis{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.ukpi{display:flex;flex-direction:column;align-items:center;min-width:65px}
+.ukpi-l{font-size:8px;color:var(--mut);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.8px}
+.ukpi-v{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--txt)}
+.ukpi-v.star{color:#7c3aed}
+.wb-lnk{display:inline-flex;padding:3px 8px;border-radius:4px;background:#7c3aed;color:#fff;font-size:9px;font-family:'IBM Plex Mono',monospace;font-weight:700;text-decoration:none}
+.wb-lnk:hover{background:#5b21b6}
+.uni-months{padding:8px 12px 10px;overflow-x:auto}
+.mmgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--brd);border-radius:6px;overflow:hidden;min-width:380px}
+.mmgh{background:var(--s2);padding:4px 3px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--mut);font-weight:600}
+.mmgc{background:var(--surf);padding:5px 3px;text-align:center}
+.mmgr{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--txt)}
+.mmgp{font-size:8.5px;color:var(--dim)}
+.score-bar{height:4px;border-radius:2px;background:linear-gradient(90deg,#7c3aed,#1a3fd4);margin-top:4px}
+.uni-score{font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--mut)}
+.kw-insight{background:#f5f0ff;border:1px solid #c4b5fd;border-left:4px solid #7c3aed;border-radius:7px;padding:10px 13px;font-size:12px;color:#3a1060;line-height:1.7;margin-bottom:12px}
+.kw-insight b{color:#1a0a40}
+</style>
+
+<div style="max-width:1060px;margin:0 auto;padding:0 18px 60px" id="unicorns-section">
+
+  <!-- HERO -->
+  <div class="uni-hero" style="border-radius:14px;margin-top:24px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px">WB Аналитика · Пижамы · Редкие находки</div>
+    <div style="font-family:'Unbounded',sans-serif;font-size:22px;font-weight:900;color:#fff;margin-bottom:6px">Товары-«Единороги» <span style="color:#a7f3d0">🦄</span></div>
+    <div style="font-size:12px;color:rgba(255,255,255,.55);font-family:'IBM Plex Mono',monospace;margin-bottom:20px">Артикулы с высоким чеком + хорошими продажами + выручкой — нестандартные сочетания</div>
+    <div style="display:flex;flex-wrap:wrap;gap:7px">
+      <div style="padding:4px 11px;border-radius:14px;border:1px solid rgba(255,255,255,.18);font-size:10px;color:rgba(255,255,255,.7);font-family:'IBM Plex Mono',monospace;background:rgba(255,255,255,.08)">💎 Чек ≥2200₽</div>
+      <div style="padding:4px 11px;border-radius:14px;border:1px solid rgba(255,255,255,.18);font-size:10px;color:rgba(255,255,255,.7);font-family:'IBM Plex Mono',monospace;background:rgba(255,255,255,.08)">📈 Выручка ≥4млн</div>
+      <div style="padding:4px 11px;border-radius:14px;border:1px solid rgba(255,255,255,.18);font-size:10px;color:rgba(255,255,255,.7);font-family:'IBM Plex Mono',monospace;background:rgba(255,255,255,.08)">🔍 Растущие запросы</div>
+    </div>
+  </div>
+
+  <!-- UNICORNS BLOCK -->
+  <div style="margin-top:24px;margin-bottom:8px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;display:flex;align-items:center;gap:7px">
+    <span style="display:block;width:3px;height:12px;border-radius:2px;background:#7c3aed;flex-shrink:0"></span>
+    ТОП ЕДИНОРОГИ — высокий чек + сильные продажи (AW 25/26)
+  </div>
+  <div id="unicorns-list"></div>
+
+  <!-- KEYWORD BLOCKS -->
+  <div style="margin:28px 0 8px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;display:flex;align-items:center;gap:7px">
+    <span style="display:block;width:3px;height:12px;border-radius:2px;background:#d4780a;flex-shrink:0"></span>
+    РАСТУЩИЕ ЗАПРОСЫ — слова в названиях выросли год к году
+  </div>
+  <div id="keyword-blocks"></div>
+
+</div>
+
+<script>
+(function(){
+const U = {"unicorns": [{"sku": 14473468, "название": "Пижама со штанами и рубашкой в клетку теплая хлопок фланель", "бренд": "Mia Cara", "тип": "Новогодний", "подтип": "Рубашка+Штаны", "цена": 3060, "выручка": 18765194.0, "продажи": 6216, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 5727, "ср_выкуп": 57.0, "цвет": "белый, зеленый, синий, красный", "состав": "Хлопок+Фланель", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 2174609.0, "chek": 3188, "sales": 790}, "10": {"rev": 3318933.0, "chek": 2953, "sales": 1078}, "11": {"rev": 10265003.0, "chek": 3307, "sales": 3512}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 3006649.0, "chek": 2792, "sales": 836}}, "score": 0.834}, {"sku": 267547375, "название": "Пижама топ и брюки хлопок", "бренд": "I am pijama", "тип": "Домашний", "подтип": "Топ+Штаны", "цена": 2882, "выручка": 18569225.0, "продажи": 6424, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 769, "ср_выкуп": 57.0, "цвет": "желтый, белый", "состав": "Хлопок", "месяцы": {"8": {"rev": 3298963.0, "chek": 2387, "sales": 1157}, "9": {"rev": 2800471.0, "chek": 2515, "sales": 1101}, "10": {"rev": 3159773.0, "chek": 2651, "sales": 1229}, "11": {"rev": 2669396.0, "chek": 2999, "sales": 901}, "12": {"rev": 3078920.0, "chek": 3647, "sales": 962}, "1": {"rev": 3561702.0, "chek": 3094, "sales": 1074}}, "score": 0.822}, {"sku": 149775468, "название": "Пижама со штанами и рубашкой оверсайз", "бренд": "Safar home", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 2645, "выручка": 16368392.0, "продажи": 6284, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 2845, "ср_выкуп": 57.0, "цвет": "молочный, цветочный розовый, бежевый, белый, ванильно-бежевый", "состав": "Вискоза+Шелк", "месяцы": {"8": {"rev": 2783580.0, "chek": 2176, "sales": 1050}, "9": {"rev": 3936966.0, "chek": 2380, "sales": 1655}, "10": {"rev": 5392532.0, "chek": 2630, "sales": 2168}, "11": {"rev": 2525089.0, "chek": 3045, "sales": 889}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 1730225.0, "chek": 2994, "sales": 522}}, "score": 0.752}, {"sku": 312952253, "название": "Пижама тройка вискоза", "бренд": "Mary Jany", "тип": "Набор", "подтип": "3в1", "цена": 2936, "выручка": 14205003.0, "продажи": 4572, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 419, "ср_выкуп": 57.0, "цвет": "молочный", "состав": "Вискоза", "месяцы": {"8": {"rev": 3275912.0, "chek": 2666, "sales": 997}, "9": {"rev": 3004797.0, "chek": 3197, "sales": 1050}, "10": {"rev": 3519676.0, "chek": 3284, "sales": 1178}, "11": {"rev": 2378460.0, "chek": 2845, "sales": 684}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2026158.0, "chek": 2690, "sales": 663}}, "score": 0.676}, {"sku": 298016106, "название": "Пижама со штанами палаццо и топом хлопок", "бренд": "kaóko", "тип": "Домашний", "подтип": "Топ+Штаны", "цена": 2636, "выручка": 14352156.0, "продажи": 4991, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 2088, "ср_выкуп": 57.0, "цвет": "меланж, серый меланж, серый", "состав": "Хлопок+Качество компакт-пенье", "месяцы": {"8": {"rev": 6205956.0, "chek": 2721, "sales": 1884}, "9": {"rev": 5087441.0, "chek": 2611, "sales": 1917}, "10": {"rev": 3058759.0, "chek": 2575, "sales": 1190}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}, "score": 0.669}, {"sku": 313248591, "название": "Пижама муслиновая хлопок со штанами и рубашкой", "бренд": "LUICLO", "тип": "Утепленный", "подтип": "Рубашка+Штаны", "цена": 2388, "выручка": 12642253.0, "продажи": 5155, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 1154, "ср_выкуп": 57.0, "цвет": "белый, бежевый нейтральный, молочный", "состав": "Хлопок+Муслин", "месяцы": {"8": {"rev": 3155368.0, "chek": 1822, "sales": 1412}, "9": {"rev": 3310141.0, "chek": 2360, "sales": 1497}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 4444818.0, "chek": 2822, "sales": 1619}, "1": {"rev": 1731926.0, "chek": 2548, "sales": 627}}, "score": 0.618}, {"sku": 575052412, "название": "Пижама новогодняя с брюками и лонгсливом", "бренд": "I am pijama", "тип": "Новогодний", "подтип": "Лонгслив+Штаны", "цена": 4455, "выручка": 9475904.0, "продажи": 2070, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 58, "ср_выкуп": 57.0, "цвет": "бордовый", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 2279705.0, "chek": 4329, "sales": 536}, "12": {"rev": 7196199.0, "chek": 4581, "sales": 1534}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}, "score": 0.617}, {"sku": 292654817, "название": "Костюм летний в пижамном стиле", "бренд": "OuMoona", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 3022, "выручка": 12054462.0, "продажи": 3881, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 786, "ср_выкуп": 57.0, "цвет": "белый, голубой", "состав": "Полиэстер", "месяцы": {"8": {"rev": 3100150.0, "chek": 2785, "sales": 904}, "9": {"rev": 2144729.0, "chek": 2898, "sales": 724}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 4210661.0, "chek": 3573, "sales": 1384}, "1": {"rev": 2598922.0, "chek": 2832, "sales": 869}}, "score": 0.615}, {"sku": 251936361, "название": "Домашний костюм шелковый со штанами пижама", "бренд": "unami", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 3940, "выручка": 10445244.0, "продажи": 2642, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 1101, "ср_выкуп": 57.0, "цвет": "белый, серый", "состав": "Шелк+Полиэстер", "месяцы": {"8": {"rev": 2892155.0, "chek": 3720, "sales": 638}, "9": {"rev": 3117339.0, "chek": 3687, "sales": 893}, "10": {"rev": 2425044.0, "chek": 3892, "sales": 638}, "11": {"rev": 2010706.0, "chek": 4460, "sales": 473}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}, "score": 0.615}, {"sku": 475874633, "название": "Пижама хлопковая с брюками", "бренд": "TEREHOVA STYLE", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 2852, "выручка": 12542237.0, "продажи": 3874, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 291, "ср_выкуп": 57.0, "цвет": "серый, розовый, зеленый", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 7237748.0, "chek": 3552, "sales": 2150}, "1": {"rev": 5304489.0, "chek": 2151, "sales": 1724}}, "score": 0.612}], "keywords": {"вискоза": {"stats": {"rev24": 3521329.0, "rev25": 57467069.0, "sku24": 2, "sku25": 11, "growth": 1532.0, "chek25": 2513}, "items": [{"sku": 312952253, "название": "Пижама тройка вискоза", "бренд": "Mary Jany", "тип": "Набор", "подтип": "3в1", "цена": 2936, "выручка": 14205003.0, "продажи": 4572, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 419, "ср_выкуп": 57.0, "цвет": "молочный", "состав": "Вискоза", "месяцы": {"8": {"rev": 3275912.0, "chek": 2666, "sales": 997}, "9": {"rev": 3004797.0, "chek": 3197, "sales": 1050}, "10": {"rev": 3519676.0, "chek": 3284, "sales": 1178}, "11": {"rev": 2378460.0, "chek": 2845, "sales": 684}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2026158.0, "chek": 2690, "sales": 663}}}, {"sku": 467103381, "название": "Пижама со штанами палаццо домашний костюм вискоза", "бренд": "Амели.", "тип": "Скимс", "подтип": "Лонгслив+Штаны", "цена": 2479, "выручка": 9190654.0, "продажи": 3784, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 219, "ср_выкуп": 57.0, "цвет": "коричневый, шоколадный", "состав": "Вискоза", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 2024184.0, "chek": 2391, "sales": 873}, "10": {"rev": 2414882.0, "chek": 2282, "sales": 1049}, "11": {"rev": 1814523.0, "chek": 2452, "sales": 755}, "12": {"rev": 2937065.0, "chek": 2792, "sales": 1107}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 409985289, "название": "Пижама тройка вискоза", "бренд": "Mary Jany", "тип": "Набор", "подтип": "3в1", "цена": 2850, "выручка": 8195356.0, "продажи": 2638, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 297, "ср_выкуп": 57.0, "цвет": "розовый", "состав": "Вискоза", "месяцы": {"8": {"rev": 1886539.0, "chek": 2666, "sales": 589}, "9": {"rev": 2715246.0, "chek": 3197, "sales": 946}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 1902588.0, "chek": 2845, "sales": 564}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 1690983.0, "chek": 2690, "sales": 539}}}, {"sku": 251928198, "название": "пижама вискоза костюм домашний с брюками и футболкой", "бренд": "junabrand", "тип": "Домашний", "подтип": "Футболка+Штаны", "цена": 1806, "выручка": 4888655.0, "продажи": 2668, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 1219, "ср_выкуп": 57.0, "цвет": "капучино, кофейный", "состав": "Вискоза", "месяцы": {"8": {"rev": 3140671.0, "chek": 1649, "sales": 1732}, "9": {"rev": 1747984.0, "chek": 1964, "sales": 936}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 366619721, "название": "Пижама тройка вискоза", "бренд": "Mary Jany", "тип": "Набор", "подтип": "3в1", "цена": 2987, "выручка": 4566580.0, "продажи": 1513, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 248, "ср_выкуп": 57.0, "цвет": "черный", "состав": "Вискоза", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 1914186.0, "chek": 3284, "sales": 664}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2652394.0, "chek": 2690, "sales": 849}}}, {"sku": 143529700, "название": "Пижама летняя с шортами домашняя вискоза", "бренд": "PIRAMIDA", "тип": "Домашний", "подтип": "Футболка+Шорты", "цена": 1934, "выручка": 4356886.0, "продажи": 2036, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 3146, "ср_выкуп": 57.0, "цвет": "серый", "состав": "Вискоза", "месяцы": {"8": {"rev": 2527867.0, "chek": 1887, "sales": 1115}, "9": {"rev": 1829019.0, "chek": 1980, "sales": 921}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}]}, "плюш": {"stats": {"rev24": 3475011.0, "rev25": 57567925.0, "sku24": 2, "sku25": 19, "growth": 1556.6, "chek25": 1621}, "items": [{"sku": 283563240, "название": "Теплая женская плюшевая пижама", "бренд": "IVBREND", "тип": "Утепленный", "подтип": "Рубашка+Штаны", "цена": 1917, "выручка": 7053169.0, "продажи": 3556, "упущенная": 238281.56, "рейтинг": 5.0, "отзывы": 2459, "ср_выкуп": 57.0, "цвет": "серый", "состав": "Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 2207392.0, "chek": 1911, "sales": 1171}, "10": {"rev": 2418321.0, "chek": 1917, "sales": 1241}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2427456.0, "chek": 1922, "sales": 1144}}}, {"sku": 550568603, "название": "Пижама плюшевая с кофтой и штанами", "бренд": "ТВОЕ", "тип": "Утепленный", "подтип": "Лонгслив+Штаны", "цена": 1599, "выручка": 6419288.0, "продажи": 3266, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 195, "ср_выкуп": 57.0, "цвет": "розовый", "состав": "Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 2695328.0, "chek": 1967, "sales": 1609}, "12": {"rev": 3723960.0, "chek": 1231, "sales": 1657}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 266179041, "название": "Плюшевая пижама с нашивкой ежика и брюками", "бренд": "ТВОЕ", "тип": "Утепленный", "подтип": "Лонгслив+Штаны", "цена": 1625, "выручка": 4358726.0, "продажи": 2945, "упущенная": 926211.86, "рейтинг": 5.0, "отзывы": 399, "ср_выкуп": 57.0, "цвет": "белый, розовый", "состав": "Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 2161161.0, "chek": 1697, "sales": 1563}, "10": {"rev": 2197565.0, "chek": 1553, "sales": 1382}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 622826049, "название": "Пижама плюшевая новогодняя с брюками", "бренд": "ТВОЕ", "тип": "Новогодний", "подтип": "Лонгслив+Штаны", "цена": 1847, "выручка": 4321353.0, "продажи": 1647, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 133, "ср_выкуп": 57.0, "цвет": "красный, белый", "состав": "Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 4321353.0, "chek": 1847, "sales": 1647}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 622986457, "название": "Пижама теплая плюшевая с вышивкой", "бренд": "ТВОЕ", "тип": "Утепленный", "подтип": "Лонгслив+Штаны", "цена": 2235, "выручка": 2795787.0, "продажи": 1364, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 131, "ср_выкуп": 57.0, "цвет": "коричневый, светло-бежевый", "состав": "Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 2795787.0, "chek": 2235, "sales": 1364}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 266178946, "название": "Плюшевая пижама с вышивкой коалы и брюками", "бренд": "ТВОЕ", "тип": "Утепленный", "подтип": "Лонгслив+Штаны", "цена": 1553, "выручка": 2035811.0, "продажи": 1288, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 507, "ср_выкуп": 57.0, "цвет": "белый, голубой", "состав": "Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 2035811.0, "chek": 1553, "sales": 1288}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}]}, "кружево": {"stats": {"rev24": 0.0, "rev25": 36625419.0, "sku24": 0, "sku25": 8, "growth": null, "chek25": 1893}, "items": [{"sku": 217270523, "название": "Пижама с шортами с кружевом", "бренд": "worsted", "тип": "Домашний", "подтип": "Лонгслив+Шорты", "цена": 1742, "выручка": 15631728.0, "продажи": 8769, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 1067, "ср_выкуп": 57.0, "цвет": "черный", "состав": "Хлопок", "месяцы": {"8": {"rev": 2846414.0, "chek": 1425, "sales": 1605}, "9": {"rev": 3274875.0, "chek": 1712, "sales": 2032}, "10": {"rev": 3246644.0, "chek": 1842, "sales": 1909}, "11": {"rev": 3365726.0, "chek": 1944, "sales": 1744}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2898069.0, "chek": 1786, "sales": 1479}}}, {"sku": 262874555, "название": "Сексуальная пижама с шортами шелковая с кружевом Pinterest", "бренд": "MERLETTO", "тип": "Домашний", "подтип": "Майка+Шорты", "цена": 2340, "выручка": 4655609.0, "продажи": 1863, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 3618, "ср_выкуп": 57.0, "цвет": "пудровый, бежево-розовый", "состав": "Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 4655609.0, "chek": 2340, "sales": 1863}}}, {"sku": 446398062, "название": "Сорочка ночная с кружевом", "бренд": "AsYouWish", "тип": "Вечерний", "подтип": "Ночная сорочка", "цена": 2406, "выручка": 3178054.0, "продажи": 1333, "упущенная": 470822.81, "рейтинг": 5.0, "отзывы": 31398, "ср_выкуп": 58.0, "цвет": "бежевый, молочный, сливочный", "состав": "Полиэстер+Нейлон", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 3178054.0, "chek": 2406, "sales": 1333}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 643184758, "название": "Пижама лонгслив с кружевом на запах приталенный и брюки клеш", "бренд": "Pink Marie", "тип": "Домашний", "подтип": "Лонгслив+Штаны", "цена": 2633, "выручка": 2304653.0, "продажи": 846, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 51, "ср_выкуп": 57.0, "цвет": "черный", "состав": "Вискоза+Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2304653.0, "chek": 2633, "sales": 846}}}, {"sku": 583342659, "название": "Пижама с шортами с кружевом и длинным рукавом", "бренд": "Pink Marie", "тип": "Домашний", "подтип": "Топ+Шорты", "цена": 1758, "выручка": 2228485.0, "продажи": 1178, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 119, "ср_выкуп": 57.0, "цвет": "черный", "состав": "Лапша", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2228485.0, "chek": 1758, "sales": 1178}}}, {"sku": 643206416, "название": "Пижама лонгслив с кружевом на запах приталенный и брюки клеш", "бренд": "Pink Marie", "тип": "Домашний", "подтип": "Лонгслив+Штаны", "цена": 2633, "выручка": 2142853.0, "продажи": 764, "упущенная": 317459.7, "рейтинг": 5.0, "отзывы": 45, "ср_выкуп": 57.0, "цвет": "коричневый", "состав": "Вискоза+Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2142853.0, "chek": 2633, "sales": 764}}}]}, "семейн": {"stats": {"rev24": 5590126.0, "rev25": 63016214.0, "sku24": 1, "sku25": 10, "growth": 1027.3, "chek25": 1374}, "items": [{"sku": 271423875, "название": "Пижама новогодняя со штанами в клетку family look семейная", "бренд": "ЭЛИЗА", "тип": "Новогодний", "подтип": "Футболка+Штаны", "цена": 1035, "выручка": 26496186.0, "продажи": 19088, "упущенная": 1368379.93, "рейтинг": 5.0, "отзывы": 7269, "ср_выкуп": 57.0, "цвет": "красный, черный", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 6654677.0, "chek": 1295, "sales": 4926}, "12": {"rev": 19841509.0, "chek": 775, "sales": 14162}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 586400570, "название": "Пижама женская в клетку со штанами семейная", "бренд": "Cecile", "тип": "Новогодний", "подтип": "Рубащка+штаны", "цена": 1528, "выручка": 6274356.0, "продажи": 2947, "упущенная": 0.0, "рейтинг": 4.0, "отзывы": 89, "ср_выкуп": 57.0, "цвет": "красный, зеленый", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 6274356.0, "chek": 1528, "sales": 2947}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 271651156, "название": "Пижама новогодняя со штанами в клетку family look семейная", "бренд": "ЭЛИЗА", "тип": "Новогодний", "подтип": "Футболка+Штаны", "цена": 651, "выручка": 6228206.0, "продажи": 4298, "упущенная": 922697.19, "рейтинг": 5.0, "отзывы": 7269, "ср_выкуп": 57.0, "цвет": "зеленый, черный", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 6228206.0, "chek": 651, "sales": 4298}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 586400562, "название": "Пижама женская в клетку со штанами семейная", "бренд": "Cecile", "тип": "Новогодний", "подтип": "Рубашка+Штаны", "цена": 1805, "выручка": 4559362.0, "продажи": 2399, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 67, "ср_выкуп": 57.0, "цвет": "красный, зеленый", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 4559362.0, "chek": 1805, "sales": 2399}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 528912186, "название": "Новогодняя пижама со штанами семейная", "бренд": "ELIZA.ART", "тип": "Новогодний", "подтип": "Футболка+Штаны", "цена": 1546, "выручка": 4502763.0, "продажи": 2701, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 3372, "ср_выкуп": 57.0, "цвет": "черный", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 4502763.0, "chek": 1546, "sales": 2701}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 258834337, "название": "Новогодняя пижама со штанами в клетку Family Look семейная", "бренд": "ELIZA.ART", "тип": "Новогодний", "подтип": "Футболка+Штаны", "цена": 1518, "выручка": 4259712.0, "продажи": 3027, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 3372, "ср_выкуп": 57.0, "цвет": "красный, черный", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 4259712.0, "chek": 1518, "sales": 3027}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}]}, "муслин": {"stats": {"rev24": 47687422.0, "rev25": 32004074.0, "sku24": 11, "sku25": 8, "growth": -32.9, "chek25": 2253}, "items": [{"sku": 313248591, "название": "Пижама муслиновая хлопок со штанами и рубашкой", "бренд": "LUICLO", "тип": "Утепленный", "подтип": "Рубашка+Штаны", "цена": 2388, "выручка": 12642253.0, "продажи": 5155, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 1154, "ср_выкуп": 57.0, "цвет": "белый, бежевый нейтральный, молочный", "состав": "Хлопок+Муслин", "месяцы": {"8": {"rev": 3155368.0, "chek": 1822, "sales": 1412}, "9": {"rev": 3310141.0, "chek": 2360, "sales": 1497}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 4444818.0, "chek": 2822, "sales": 1619}, "1": {"rev": 1731926.0, "chek": 2548, "sales": 627}}}, {"sku": 255131154, "название": "Муслиновая пижама со штанами домашняя одежда хлопок", "бренд": "SCANDI LIVE", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 2587, "выручка": 3548373.0, "продажи": 1330, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 837, "ср_выкуп": 57.0, "цвет": "бежевый, белый, бежевый нейтральный, молочный", "состав": "Муслин+Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 3548373.0, "chek": 2587, "sales": 1330}}}, {"sku": 336870055, "название": "Пижама муслиновая хлопок со штанами и рубашкой", "бренд": "DECORISHA", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 1994, "выручка": 3345331.0, "продажи": 1367, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 325, "ср_выкуп": 57.0, "цвет": "изумрудно-зеленый, белый", "состав": "Хлопок+Муслин", "месяцы": {"8": {"rev": 3345331.0, "chek": 1994, "sales": 1367}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 496015078, "название": "Пижама со штанами 3 в 1 из муслина в полоску", "бренд": "DENYMAR", "тип": "Набор", "подтип": "3в2", "цена": 3667, "выручка": 2652501.0, "продажи": 719, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 739, "ср_выкуп": 57.0, "цвет": "голубой", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 2652501.0, "chek": 3667, "sales": 719}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 496018468, "название": "Пижама со штанами 3 в 1 из муслина в полоску", "бренд": "DENYMAR", "тип": "Набор", "подтип": "3в1", "цена": 3537, "выручка": 1834375.0, "продажи": 523, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 413, "ср_выкуп": 57.0, "цвет": "шоколадный, бежевый, коричневый, кофейный", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 1834375.0, "chek": 3537, "sales": 523}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}]}, "рубчик": {"stats": {"rev24": 29838833.0, "rev25": 65793860.0, "sku24": 5, "sku25": 11, "growth": 120.5, "chek25": 1119}, "items": [{"sku": 436570574, "название": "Пижама со штанами и футболкой хлопковая в рубчик", "бренд": "Glamour House", "тип": "Домашний", "подтип": "Футболка+Штаны", "цена": 1572, "выручка": 29242128.0, "продажи": 17046, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 15848, "ср_выкуп": 57.0, "цвет": "белый", "состав": "Хлопок", "месяцы": {"8": {"rev": 5499244.0, "chek": 1354, "sales": 3292}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 2705698.0, "chek": 1771, "sales": 1515}, "11": {"rev": 4046598.0, "chek": 1682, "sales": 2200}, "12": {"rev": 11975651.0, "chek": 1797, "sales": 6777}, "1": {"rev": 5014937.0, "chek": 1255, "sales": 3262}}}, {"sku": 396836909, "название": "Пижама с юбкой шортами в рубчик", "бренд": "Белатрикс", "тип": "Домашний", "подтип": "Футболка+Шорты", "цена": 1552, "выручка": 2635597.0, "продажи": 1734, "упущенная": 282385.39, "рейтинг": 5.0, "отзывы": 251, "ср_выкуп": 57.0, "цвет": "розовый, пудровый", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 2635597.0, "chek": 1552, "sales": 1734}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}]}, "family": {"stats": {"rev24": 50629663.0, "rev25": 76011932.0, "sku24": 9, "sku25": 14, "growth": 50.1, "chek25": 1266}, "items": [{"sku": 271423875, "название": "Пижама новогодняя со штанами в клетку family look семейная", "бренд": "ЭЛИЗА", "тип": "Новогодний", "подтип": "Футболка+Штаны", "цена": 1035, "выручка": 26496186.0, "продажи": 19088, "упущенная": 1368379.93, "рейтинг": 5.0, "отзывы": 7269, "ср_выкуп": 57.0, "цвет": "красный, черный", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 6654677.0, "chek": 1295, "sales": 4926}, "12": {"rev": 19841509.0, "chek": 775, "sales": 14162}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 533392244, "название": "Пижама новогодняя Family Look", "бренд": "Sofia_trikotaz", "тип": "Новогодний", "подтип": "Футболка+Штаны", "цена": 1373, "выручка": 9823311.0, "продажи": 7618, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 3321, "ср_выкуп": 57.0, "цвет": "красный, черный", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 3233583.0, "chek": 1211, "sales": 2631}, "12": {"rev": 6589728.0, "chek": 1535, "sales": 4987}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 271651156, "название": "Пижама новогодняя со штанами в клетку family look семейная", "бренд": "ЭЛИЗА", "тип": "Новогодний", "подтип": "Футболка+Штаны", "цена": 651, "выручка": 6228206.0, "продажи": 4298, "упущенная": 922697.19, "рейтинг": 5.0, "отзывы": 7269, "ср_выкуп": 57.0, "цвет": "зеленый, черный", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 6228206.0, "chek": 651, "sales": 4298}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 163188687, "название": "Пижама женская трикотажная Family Look", "бренд": "TRUE BALANCE", "тип": "Новогодний", "подтип": "Кофта+Штаны", "цена": 906, "выручка": 5682022.0, "продажи": 7222, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 10707, "ср_выкуп": 57.0, "цвет": "бирюзовый, красный, зеленый", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 5682022.0, "chek": 906, "sales": 7222}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 258834337, "название": "Новогодняя пижама со штанами в клетку Family Look семейная", "бренд": "ELIZA.ART", "тип": "Новогодний", "подтип": "Футболка+Штаны", "цена": 1518, "выручка": 4259712.0, "продажи": 3027, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 3372, "ср_выкуп": 57.0, "цвет": "красный, черный", "состав": "Хлопок", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 4259712.0, "chek": 1518, "sales": 3027}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 417362502, "название": "Пижама женская с начесом Family Look", "бренд": "TRUE BALANCE", "тип": "Новогодний", "подтип": "Рубашка+Штаны", "цена": 1295, "выручка": 3949010.0, "продажи": 2599, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 6830, "ср_выкуп": 57.0, "цвет": "красный, зеленый", "состав": "Хлопок+Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 3949010.0, "chek": 1295, "sales": 2599}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}]}, "шёлк": {"stats": {"rev24": 471576142.0, "rev25": 416391981.0, "sku24": 74, "sku25": 75, "growth": -11.7, "chek25": 2242, "label": "шёлк/шелк"}, "items": [{"sku": 111489825, "название": "Сексуальная пижама с шортами шелковая Pinterest", "бренд": "Merletto", "тип": "Домашний", "подтип": "Майка+Шорты", "цена": 2168, "выручка": 16495613.0, "продажи": 7433, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 4283, "ср_выкуп": 57.0, "цвет": "кремовый, слоновая кость, топленое молоко, айвори, молочный", "состав": "Полиэстер", "месяцы": {"8": {"rev": 4227056.0, "chek": 1789, "sales": 1959}, "9": {"rev": 3316900.0, "chek": 1979, "sales": 1680}, "10": {"rev": 2820661.0, "chek": 2221, "sales": 1327}, "11": {"rev": 2084550.0, "chek": 2513, "sales": 830}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 4046446.0, "chek": 2340, "sales": 1637}}}, {"sku": 190536406, "название": "Пижама шелковая со штанами и рубашкой домашний костюм", "бренд": "S’LOVERS", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 2074, "выручка": 11590545.0, "продажи": 5039, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 3570, "ср_выкуп": 57.0, "цвет": "черный", "состав": "Полиэстер+Шелк", "месяцы": {"8": {"rev": 2532358.0, "chek": 1612, "sales": 1279}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 5812306.0, "chek": 2536, "sales": 2326}, "1": {"rev": 3245881.0, "chek": 2075, "sales": 1434}}}, {"sku": 303041515, "название": "Пижама шелковая со штанами и рубашкой домашняя", "бренд": "MEOLO", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 2900, "выручка": 11574595.0, "продажи": 4002, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 597, "ср_выкуп": 57.0, "цвет": "пудровый, бежевый, бежево-розовый, розовый, молочный", "состав": "Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 1872051.0, "chek": 2501, "sales": 816}, "11": {"rev": 2025536.0, "chek": 2778, "sales": 731}, "12": {"rev": 4683036.0, "chek": 3481, "sales": 1502}, "1": {"rev": 2993972.0, "chek": 2841, "sales": 953}}}, {"sku": 329632185, "название": "Пижама женская шелковая со штанами и рубашкой", "бренд": "OuMoona", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 3155, "выручка": 10822209.0, "продажи": 3395, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 641, "ср_выкуп": 57.0, "цвет": "сиреневый, бежевый, фиолетовый, синий", "состав": "Полиэстер", "месяцы": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 2880323.0, "chek": 2812, "sales": 1006}, "10": {"rev": 2937808.0, "chek": 3240, "sales": 963}, "11": {"rev": 2589698.0, "chek": 3665, "sales": 728}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2414380.0, "chek": 2902, "sales": 698}}}, {"sku": 251936361, "название": "Домашний костюм шелковый со штанами пижама", "бренд": "unami", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 3940, "выручка": 10445244.0, "продажи": 2642, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 1101, "ср_выкуп": 57.0, "цвет": "белый, серый", "состав": "Шелк+Полиэстер", "месяцы": {"8": {"rev": 2892155.0, "chek": 3720, "sales": 638}, "9": {"rev": 3117339.0, "chek": 3687, "sales": 893}, "10": {"rev": 2425044.0, "chek": 3892, "sales": 638}, "11": {"rev": 2010706.0, "chek": 4460, "sales": 473}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 0.0, "chek": 0, "sales": 0}}}, {"sku": 365929196, "название": "Пижама женская шелковая со штанами", "бренд": "OuMoona", "тип": "Домашний", "подтип": "Рубашка+Штаны", "цена": 2817, "выручка": 9835380.0, "продажи": 3318, "упущенная": 0.0, "рейтинг": 5.0, "отзывы": 974, "ср_выкуп": 57.0, "цвет": "сиреневый, розовый, розово-фиолетовый, фиолетовый", "состав": "Полиэстер", "месяцы": {"8": {"rev": 2449066.0, "chek": 2604, "sales": 737}, "9": {"rev": 2494311.0, "chek": 2709, "sales": 910}, "10": {"rev": 2034262.0, "chek": 3195, "sales": 694}, "11": {"rev": 0.0, "chek": 0, "sales": 0}, "12": {"rev": 0.0, "chek": 0, "sales": 0}, "1": {"rev": 2857741.0, "chek": 2761, "sales": 977}}}]}}};
+const MO=['8','9','10','11','12','1'];
+const MN={'8':'Авг','9':'Сен','10':'Окт','11':'Ноя','12':'Дек','1':'Янв'};
+const f=n=>{if(!n||n==0)return'—';if(n>=1e9)return(n/1e9).toFixed(2)+'млрд';if(n>=1e6)return(n/1e6).toFixed(1)+'млн';if(n>=1e3)return Math.round(n/1e3)+'тыс';return Math.round(n).toLocaleString('ru')};
+const fr=n=>n?Math.round(n).toLocaleString('ru')+'₽':'—';
+const hlvl=(v,mx)=>{if(!v||v==0)return 0;const r=v/mx;if(r>.75)return 5;if(r>.5)return 4;if(r>.3)return 3;if(r>.12)return 2;return 1};
+
+function monthMini(months){
+  const vals=MO.map(m=>months[m]?.rev||0);
+  const mx=Math.max(...vals);
+  return`<div class="uni-months">
+    <div class="mmgrid">
+      ${MO.map(m=>`<div class="mmgh">${MN[m]}</div>`).join('')}
+      ${MO.map(m=>{const d=months[m]||{};const v=d.rev||0;const lv=hlvl(v,mx);
+        return`<div class="mmgc hm${lv}">
+          <div class="mmgr">${v?f(v):'—'}</div>
+          ${d.chek?`<div class="mmgp">${d.chek.toLocaleString('ru')}₽</div>`:''}
+        </div>`;}).join('')}
+    </div>
+  </div>`;
+}
+
+function artCard(a,i,showScore){
+  const rc=i==0?'g':i==1?'s':i==2?'b':'';
+  const sku=a.sku||a.SKU;
+  return`<div class="uni-item">
+    <div class="uni-head">
+      <span class="uni-rank ${rc}">${i+1}</span>
+      <div class="uni-meta">
+        <div class="uni-name">${a.название}</div>
+        <div class="uni-sub">
+          <span><b>${a.бренд}</b></span>
+          <span>${a.тип} · ${a.подтип}</span>
+          ${a.цвет?`<span>${a.цвет}</span>`:''}
+          ${a.состав?`<span>${a.состав}</span>`:''}
+        </div>
+        ${showScore&&a.score?`<div class="uni-score">Unicorn score: ${(a.score*100).toFixed(0)}/100</div><div class="score-bar" style="width:${(a.score*100).toFixed(0)}%"></div>`:''}
+      </div>
+      <div class="uni-kpis">
+        <div class="ukpi"><div class="ukpi-l">Цена</div><div class="ukpi-v star">${fr(a.цена)}</div></div>
+        <div class="ukpi"><div class="ukpi-l">Выручка</div><div class="ukpi-v">${f(a.выручка)}</div></div>
+        <div class="ukpi"><div class="ukpi-l">Продажи</div><div class="ukpi-v">${f(a.продажи)}</div></div>
+        <div class="ukpi"><div class="ukpi-l">Упущ.</div><div class="ukpi-v ${a.упущенная>1e6?'star':''}">${f(a.упущенная)}</div></div>
+        <div class="ukpi"><div class="ukpi-l">Рейтинг</div><div class="ukpi-v">${a.рейтинг||'—'}</div></div>
+        <a class="wb-lnk" href="https://www.wildberries.ru/catalog/${sku}/detail.aspx" target="_blank">WB →</a>
+      </div>
+    </div>
+    ${monthMini(a.месяцы||{})}
+  </div>`;
+}
+
+// UNICORNS
+document.getElementById('unicorns-list').innerHTML=U.unicorns.map((a,i)=>artCard(a,i,true)).join('');
+
+// KEYWORD BLOCKS
+const kwColors={'вискоза':'#7c3aed','плюш':'#c43030','кружево':'#d4780a','семейн':'#1a3fd4',
+  'муслин':'#0d9e6e','рубчик':'#6d28d9','family':'#c43030','шёлк':'#d4780a'};
+const kwInsights={
+  'вискоза':'Вискоза-пижамы выросли на <b>+1532%</b> — ниша практически пустая год назад, сейчас активно заполняется. Ср. чек <b>2513₽</b> — самый высокий среди ключевых слов. Покупатель ищет мягкую, струящуюся ткань как альтернативу шёлку по доступной цене.',
+  'плюш':'Плюшевые пижамы — взрывной рост <b>+1557%</b>. С 2 до 19 артикулов за год. Осенне-зимний тренд на уютные текстуры — velvet, plush, velsoft. Ср. чек 1621₽. Перспективный тип для входа с высоким чеком.',
+  'кружево':'Кружево в пижамах — <b>NEW ниша</b>, в прошлом сезоне не было вообще. 8 артикулов, 37млн выручки. Ср. чек 1893₽. Романтический стиль, бельевая эстетика — растущий тренд. Свободная ниша.',
+  'семейн':'Семейные пижамы — рост <b>+1027%</b>, с 1 до 10 артикулов. Ср. чек 1374₽. Запрос «семейная пижама» стабильно растёт в поиске. Пик — декабрь. Можно развить вместе с Family Look.',
+  'муслин':'Муслин — проседает -33%, но ср. чек <b>2253₽</b> — один из лучших. Конкуренция снизилась. Подходящий момент для входа с качественным муслиновым комплектом.',
+  'рубчик':'Рубчик растёт <b>+120%</b>. Связан со Скимс-трендом. Пока только 11 артикулов — ниша совсем свободна. Ср. чек 1119₽ пока низкий но растёт.',
+  'family':'Family Look — рост <b>+50%</b>. 14 артикулов. Ср. чек 1266₽. Запрос стабильно растёт к декабрю. Подарочный сегмент — покупают всей семьёй.',
+  'шёлк':'Шёлк снизился -12% но остаётся крупным сегментом (416млн). Ср. чек <b>2242₽</b>. Насыщение в дешёвом шёлке, но премиум-сегмент 3000₽+ остаётся свободным.',
+};
+
+let kwHtml='';
+Object.entries(U.keywords).forEach(([kw,data])=>{
+  const s=data.stats;
+  const items=data.items;
+  const color=kwColors[kw]||'#1a3fd4';
+  const gv=s.growth;
+  const gStr=gv==null?'NEW':gv>0?`+${gv.toFixed(0)}%`:`${gv.toFixed(0)}%`;
+  const gCls=gv==null?'new':gv>50?'pos':gv<0?'neg':'';
+  
+  kwHtml+=`<div class="kw-card">
+    <div class="kw-head">
+      <div class="kw-badge" style="background:${color}">#${kw}</div>
+      <div style="font-size:12px;color:var(--dim)">Запрос в названиях товаров</div>
+      <div class="kw-stats">
+        <div class="kw-stat"><div class="kw-stat-l">Рост</div><div class="kw-stat-v ${gCls}">${gStr}</div></div>
+        <div class="kw-stat"><div class="kw-stat-l">Арт. 24→25</div><div class="kw-stat-v">${s.sku24}→${s.sku25}</div></div>
+        <div class="kw-stat"><div class="kw-stat-l">Выручка</div><div class="kw-stat-v">${f(s.rev25)}</div></div>
+        <div class="kw-stat"><div class="kw-stat-l">Ср.чек</div><div class="kw-stat-v">${fr(s.chek25)}</div></div>
+      </div>
+    </div>
+    <div class="kw-body">
+      <div class="kw-insight">${kwInsights[kw]||''}</div>
+      ${items.length?items.map((a,i)=>artCard(a,i,false)).join(''):'<div style="color:var(--mut);padding:12px;font-size:12px">Нет артикулов с заданными фильтрами</div>'}
+    </div>
+  </div>`;
+});
+document.getElementById('keyword-blocks').innerHTML=kwHtml;
+
+// Update nav
+const nav=document.querySelector('.model-nav');
+if(nav){
+  const lnk=document.createElement('a');
+  lnk.className='mnav';
+  lnk.href='#unicorns-section';
+  lnk.textContent='🦄 Единороги';
+  nav.appendChild(lnk);
+}
+
+})();
+</script>
+
+<!-- ═══ COLOR ANALYSIS SECTION ═══ -->
+<style>
+.col-hero{background:linear-gradient(135deg,#0a0818,#1a0840,#180820);padding:36px 28px 30px;color:#fff;position:relative;overflow:hidden;border-radius:14px;margin-top:24px}
+.col-hero::before{content:'🎨';position:absolute;right:20px;top:-10px;font-size:130px;opacity:.07;pointer-events:none}
+.palette-strip{display:flex;gap:3px;margin:16px 0 6px;flex-wrap:wrap}
+.pal-dot{width:32px;height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.2);cursor:pointer;transition:transform .15s;flex-shrink:0}
+.pal-dot:hover{transform:scale(1.2)}
+.col-card{background:var(--surf);border:1px solid var(--brd);border-radius:12px;margin-bottom:14px;overflow:hidden;box-shadow:var(--sh)}
+.col-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--brd);flex-wrap:wrap}
+.col-swatch{width:44px;height:44px;border-radius:10px;flex-shrink:0;border:1px solid rgba(0,0,0,.1)}
+.col-info{flex:1}
+.col-name{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;margin-bottom:3px}
+.col-kpis{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.ckpi{display:flex;flex-direction:column;align-items:center;min-width:75px;padding:6px 8px;background:var(--s2);border:1px solid var(--brd);border-radius:7px}
+.ckl{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;margin-bottom:2px}
+.ckv{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:800;color:var(--txt)}
+.ckv.pos{color:var(--green)}.ckv.neg{color:var(--red)}.ckv.warn{color:var(--orange)}.ckv.hi{color:#7c3aed}
+.col-body{padding:14px 18px}
+.col-bars{display:flex;flex-direction:column;gap:7px}
+.cb-item{display:flex;flex-direction:column;gap:2px}
+.cb-hd{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.cb-lbl{font-size:11px;font-weight:500}
+.cb-val{font-size:10px;color:var(--dim);font-family:'IBM Plex Mono',monospace}
+.cb-track{height:6px;background:var(--s3);border-radius:3px;overflow:hidden}
+.cb-fill{height:100%;border-radius:3px}
+.trend-matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:700px){.trend-matrix{grid-template-columns:1fr 1fr}}
+.tm-cell{background:var(--surf);border:1px solid var(--brd);border-radius:10px;padding:12px;text-align:center;position:relative;overflow:hidden}
+.tm-swatch{width:36px;height:36px;border-radius:50%;margin:0 auto 8px;border:2px solid rgba(0,0,0,.08)}
+.tm-name{font-weight:700;font-size:12px;margin-bottom:4px}
+.tm-chek{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:800;color:#7c3aed}
+.tm-growth{font-size:9px;font-family:'IBM Plex Mono',monospace;font-weight:600;margin-top:2px}
+.tm-growth.pos{color:var(--green)}.tm-growth.neg{color:var(--red)}.tm-growth.new{color:#7c3aed}
+.tm-label{position:absolute;top:6px;right:6px;font-size:7.5px;font-family:'IBM Plex Mono',monospace;
+  padding:1px 4px;border-radius:3px;background:#fde090;color:#7a4400;font-weight:700}
+.mc-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px}
+@media(max-width:700px){.mc-row{grid-template-columns:1fr 1fr}}
+.mc-item{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer}
+.mc-sw{width:42px;height:42px;border-radius:10px;border:2px solid var(--brd);transition:transform .15s}
+.mc-item:hover .mc-sw{transform:scale(1.1)}
+.mc-n{font-size:10px;font-weight:600;text-align:center;color:var(--txt)}
+.mc-d{font-size:9px;color:var(--mut);font-family:'IBM Plex Mono',monospace}
+.model-col-block{background:var(--s2);border-radius:8px;padding:12px;margin-bottom:10px}
+.model-col-title{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;margin-bottom:8px}
+.aw-badge{display:inline-flex;padding:1px 5px;border-radius:3px;font-size:8.5px;font-family:'IBM Plex Mono',monospace;font-weight:700}
+.aw-hi{background:#dce4ff;color:#1a3490}.aw-lo{background:#d4f0e4;color:#083a1e}
+.color-insight{background:#f5f0ff;border:1px solid #c4b5fd;border-left:4px solid #7c3aed;border-radius:7px;padding:10px 13px;font-size:12px;color:#3a1060;line-height:1.75;margin:10px 0}
+.color-insight b{color:#1a0a40}
+</style>
+
+<div style="max-width:1060px;margin:0 auto;padding:0 18px 60px" id="colors-section">
+
+  <div class="col-hero">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px">WB Аналитика · Пижамы · Цвета</div>
+    <div style="font-family:'Unbounded',sans-serif;font-size:22px;font-weight:900;color:#fff;margin-bottom:6px">Цветовой анализ 🎨</div>
+    <div style="font-size:12px;color:rgba(255,255,255,.5);font-family:'IBM Plex Mono',monospace;margin-bottom:16px">Какие цвета продаются · Тренды · Средний чек по цвету · По каждой модели</div>
+    <div class="palette-strip" id="palette-strip"></div>
+  </div>
+
+  <!-- TREND MATRIX -->
+  <div style="margin:22px 0 10px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;display:flex;align-items:center;gap:7px">
+    <span style="display:block;width:3px;height:12px;border-radius:2px;background:#7c3aed;flex-shrink:0"></span>
+    ТРЕНДОВЫЕ ЦВЕТА — высокий чек и/или сильный рост (AW 25/26)
+  </div>
+  <div class="trend-matrix" id="trend-matrix"></div>
+
+  <!-- COLOR INSIGHT BLOCK -->
+  <div class="color-insight" id="color-main-insight"></div>
+
+  <!-- MODEL COLORS -->
+  <div style="margin:20px 0 10px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;display:flex;align-items:center;gap:7px">
+    <span style="display:block;width:3px;height:12px;border-radius:2px;background:#d4780a;flex-shrink:0"></span>
+    ЦВЕТА ПО КАЖДОЙ МОДЕЛИ — что реально покупают
+  </div>
+  <div id="model-colors-block"></div>
+
+  <!-- ALL COLORS DETAIL -->
+  <div style="margin:22px 0 10px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;display:flex;align-items:center;gap:7px">
+    <span style="display:block;width:3px;height:12px;border-radius:2px;background:#1a3fd4;flex-shrink:0"></span>
+    ДЕТАЛЬНЫЙ РАЗБОР ПО ЦВЕТАМ — выручка, чек, сезон, бренды
+  </div>
+
+  <!-- FILTER -->
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px" id="col-filters">
+    <button style="padding:4px 13px;border-radius:14px;border:1px solid var(--acc);background:var(--acc);color:#fff;font-size:10px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-weight:700" onclick="colFilter('all',this)">Все</button>
+    <button style="padding:4px 13px;border-radius:14px;border:1px solid var(--brd);background:var(--surf);color:var(--dim);font-size:10px;cursor:pointer;font-family:'IBM Plex Mono',monospace" onclick="colFilter('aw',this)">❄️ AW &gt;70%</button>
+    <button style="padding:4px 13px;border-radius:14px;border:1px solid var(--brd);background:var(--surf);color:var(--dim);font-size:10px;cursor:pointer;font-family:'IBM Plex Mono',monospace" onclick="colFilter('highchek',this)">💎 Чек &gt;1800₽</button>
+    <button style="padding:4px 13px;border-radius:14px;border:1px solid var(--brd);background:var(--surf);color:var(--dim);font-size:10px;cursor:pointer;font-family:'IBM Plex Mono',monospace" onclick="colFilter('growing',this)">📈 Рост &gt;50%</button>
+  </div>
+
+  <div id="all-colors-list"></div>
+
+</div>
+
+<script>
+(function(){
+const CD = {"all_colors": [{"цвет": "Белый", "выручка": 807074304.0, "выручка_24": 932355794.0, "доля": 21.3, "артикулов": 143, "продажи": 700385, "ср_чек": 1576, "выр_на_арт": 5643876, "упущенная": 10486260.76, "aw_доля": 61, "рост": -13.4, "по_месяцам": {"8": {"rev": 171205573.0, "chek": 1275, "sales": 161911}, "9": {"rev": 144400474.0, "chek": 1567, "sales": 147433}, "10": {"rev": 99123519.0, "chek": 1503, "sales": 86227}, "11": {"rev": 112416300.0, "chek": 1715, "sales": 93592}, "12": {"rev": 152327238.0, "chek": 1917, "sales": 109194}, "1": {"rev": 127601200.0, "chek": 1615, "sales": 102028}}, "топ_бренды": [{"бренд": "Purrr", "выр": 87243941.0, "доля": 10.8}, {"бренд": "I am pijama", "выр": 55219650.0, "доля": 6.8}, {"бренд": "Sarkech Moda", "выр": 45183664.0, "доля": 5.6}, {"бренд": "Glamour House", "выр": 36319854.0, "доля": 4.5}], "по_типам": [{"тип": "Домашний", "выр": 625074131.0, "доля": 77.4}, {"тип": "Новогодний", "выр": 56901494.0, "доля": 7.1}, {"тип": "Утепленный", "выр": 40391736.0, "доля": 5.0}, {"тип": "Скимс", "выр": 39174892.0, "доля": 4.9}], "по_подтипам": [{"подтип": "Рубашка+Штаны", "выр": 247424675.0, "доля": 30.7}, {"подтип": "Лонгслив+Штаны", "выр": 130691861.0, "доля": 16.2}, {"подтип": "Футболка+Штаны", "выр": 90861709.0, "доля": 11.3}, {"подтип": "Футболка+Шорты", "выр": 77921472.0, "доля": 9.7}]}, {"цвет": "Черный", "выручка": 658396054.0, "выручка_24": 599872219.0, "доля": 17.4, "артикулов": 94, "продажи": 632997, "ср_чек": 1448, "выр_на_арт": 7004213, "упущенная": 5431679.53, "aw_доля": 60, "рост": 9.8, "по_месяцам": {"8": {"rev": 156435701.0, "chek": 1130, "sales": 168173}, "9": {"rev": 109908155.0, "chek": 1144, "sales": 139322}, "10": {"rev": 89857787.0, "chek": 1526, "sales": 93213}, "11": {"rev": 89385498.0, "chek": 1559, "sales": 87996}, "12": {"rev": 103687544.0, "chek": 1779, "sales": 74950}, "1": {"rev": 109121369.0, "chek": 1660, "sales": 69343}}, "топ_бренды": [{"бренд": "Modjimoda", "выр": 108486067.0, "доля": 16.5}, {"бренд": "S’LOVERS", "выр": 41024468.0, "доля": 6.2}, {"бренд": "AMA collection", "выр": 30914968.0, "доля": 4.7}, {"бренд": "Galtex", "выр": 27850715.0, "доля": 4.2}], "по_типам": [{"тип": "Домашний", "выр": 530925612.0, "доля": 80.6}, {"тип": "Набор", "выр": 48350936.0, "доля": 7.3}, {"тип": "Бельевой", "выр": 30718073.0, "доля": 4.7}, {"тип": "Новогодний", "выр": 27226288.0, "доля": 4.1}], "по_подтипам": [{"подтип": "Рубашка+Штаны", "выр": 177740015.0, "доля": 27.0}, {"подтип": "Топ+Шорты", "выр": 110241403.0, "доля": 16.7}, {"подтип": "Футболка+Штаны", "выр": 77569435.0, "доля": 11.8}, {"подтип": "Майка+Шорты", "выр": 66300634.0, "доля": 10.1}]}, {"цвет": "Красный", "выручка": 462007849.0, "выручка_24": 412646801.0, "доля": 12.2, "артикулов": 86, "продажи": 321785, "ср_чек": 1540, "выр_на_арт": 5372184, "упущенная": 13267011.14, "aw_доля": 95, "рост": 12.0, "по_месяцам": {"8": {"rev": 11073327.0, "chek": 902, "sales": 10604}, "9": {"rev": 12413370.0, "chek": 840, "sales": 15539}, "10": {"rev": 22702840.0, "chek": 1605, "sales": 17050}, "11": {"rev": 120943007.0, "chek": 1608, "sales": 82783}, "12": {"rev": 241850974.0, "chek": 1632, "sales": 158503}, "1": {"rev": 53024331.0, "chek": 1455, "sales": 37306}}, "топ_бренды": [{"бренд": "ЭЛИЗА", "выр": 32935345.0, "доля": 7.1}, {"бренд": "PROBELIO", "выр": 31334817.0, "доля": 6.8}, {"бренд": "I am pijama", "выр": 25444790.0, "доля": 5.5}, {"бренд": "ilookhome", "выр": 22375710.0, "доля": 4.8}], "по_типам": [{"тип": "Новогодний", "выр": 352326554.0, "доля": 76.3}, {"тип": "Домашний", "выр": 81850404.0, "доля": 17.7}, {"тип": "Скимс", "выр": 11495866.0, "доля": 2.5}, {"тип": "Плюс сайз", "выр": 7131088.0, "доля": 1.5}], "по_подтипам": [{"подтип": "Рубашка+Штаны", "выр": 199814032.0, "доля": 43.2}, {"подтип": "Футболка+Штаны", "выр": 125088939.0, "доля": 27.1}, {"подтип": "Лонгслив+Штаны", "выр": 23753340.0, "доля": 5.1}, {"подтип": "Футболка+Шорты", "выр": 22900449.0, "доля": 5.0}]}, {"цвет": "Серый", "выручка": 314695848.0, "выручка_24": 131032577.0, "доля": 8.3, "артикулов": 69, "продажи": 243915, "ср_чек": 1673, "выр_на_арт": 4560809, "упущенная": 2690536.2899999996, "aw_доля": 59, "рост": 140.2, "по_месяцам": {"8": {"rev": 66780822.0, "chek": 1370, "sales": 59482}, "9": {"rev": 62230577.0, "chek": 1612, "sales": 56903}, "10": {"rev": 44456998.0, "chek": 1527, "sales": 37107}, "11": {"rev": 31123348.0, "chek": 1898, "sales": 21259}, "12": {"rev": 53841787.0, "chek": 2165, "sales": 32801}, "1": {"rev": 56262316.0, "chek": 1718, "sales": 36363}}, "топ_бренды": [{"бренд": "SAMAЯ", "выр": 23163640.0, "доля": 7.4}, {"бренд": "Pavlotti", "выр": 22965878.0, "доля": 7.3}, {"бренд": "TEREHOVA STYLE", "выр": 15661739.0, "доля": 5.0}, {"бренд": "kaóko", "выр": 14352156.0, "доля": 4.6}], "по_типам": [{"тип": "Домашний", "выр": 255687978.0, "доля": 81.2}, {"тип": "Новогодний", "выр": 27587685.0, "доля": 8.8}, {"тип": "Утепленный", "выр": 22845006.0, "доля": 7.3}, {"тип": "Скимс", "выр": 6325793.0, "доля": 2.0}], "по_подтипам": [{"подтип": "Рубашка+Штаны", "выр": 87168012.0, "доля": 27.7}, {"подтип": "Футболка+Штаны", "выр": 44072571.0, "доля": 14.0}, {"подтип": "Футболка+Шорты", "выр": 41401672.0, "доля": 13.2}, {"подтип": "Лонгслив+Штаны", "выр": 29421216.0, "доля": 9.3}]}, {"цвет": "Бежевый", "выручка": 279934835.0, "выручка_24": 238275929.0, "доля": 7.4, "артикулов": 57, "продажи": 205399, "ср_чек": 1607, "выр_на_арт": 4911137, "упущенная": 4938688.05, "aw_доля": 66, "рост": 17.5, "по_месяцам": {"8": {"rev": 50405909.0, "chek": 1125, "sales": 39933}, "9": {"rev": 44677459.0, "chek": 1728, "sales": 31760}, "10": {"rev": 50264839.0, "chek": 1884, "sales": 33733}, "11": {"rev": 37360985.0, "chek": 1754, "sales": 26740}, "12": {"rev": 53005488.0, "chek": 1591, "sales": 44233}, "1": {"rev": 44220155.0, "chek": 1564, "sales": 29000}}, "топ_бренды": [{"бренд": "StreamLove", "выр": 23443639.0, "доля": 8.4}, {"бренд": "Galtex", "выр": 21930074.0, "доля": 7.8}, {"бренд": "Pavlotti", "выр": 21205629.0, "доля": 7.6}, {"бренд": "Purplegrape", "выр": 17482048.0, "доля": 6.2}], "по_типам": [{"тип": "Домашний", "выр": 200304449.0, "доля": 71.6}, {"тип": "Утепленный", "выр": 31756903.0, "доля": 11.3}, {"тип": "Плюс сайз", "выр": 21930074.0, "доля": 7.8}, {"тип": "Набор", "выр": 18094240.0, "доля": 6.5}], "по_подтипам": [{"подтип": "Рубашка+Штаны", "выр": 88087311.0, "доля": 31.5}, {"подтип": "Футболка+Штаны", "выр": 60006736.0, "доля": 21.4}, {"подтип": "Кофта+Штаны", "выр": 23191517.0, "доля": 8.3}, {"подтип": "Футболка+Бриджи", "выр": 20770723.0, "доля": 7.4}]}, {"цвет": "Розовый", "выручка": 200521107.0, "выручка_24": 132120507.0, "доля": 5.3, "артикулов": 55, "продажи": 136843, "ср_чек": 1770, "выр_на_арт": 3645838, "упущенная": 7189186.6, "aw_доля": 69, "рост": 51.8, "по_месяцам": {"8": {"rev": 24416492.0, "chek": 1320, "sales": 16877}, "9": {"rev": 38436875.0, "chek": 1265, "sales": 38843}, "10": {"rev": 28620335.0, "chek": 1940, "sales": 18152}, "11": {"rev": 25018790.0, "chek": 1782, "sales": 15961}, "12": {"rev": 41498275.0, "chek": 2491, "sales": 21539}, "1": {"rev": 42530340.0, "chek": 1959, "sales": 25471}}, "топ_бренды": [{"бренд": "ТВОЕ", "выр": 18151419.0, "доля": 9.1}, {"бренд": "Namari home", "выр": 11839424.0, "доля": 5.9}, {"бренд": "Rolexotic", "выр": 11730786.0, "доля": 5.9}, {"бренд": "Сити Текс", "выр": 11617209.0, "доля": 5.8}], "по_типам": [{"тип": "Домашний", "выр": 116023502.0, "доля": 57.9}, {"тип": "Набор", "выр": 24834679.0, "доля": 12.4}, {"тип": "Утепленный", "выр": 23769398.0, "доля": 11.9}, {"тип": "Скимс", "выр": 23596334.0, "доля": 11.8}], "по_подтипам": [{"подтип": "Рубашка+Штаны", "выр": 64095004.0, "доля": 32.0}, {"подтип": "Лонгслив+Штаны", "выр": 24042393.0, "доля": 12.0}, {"подтип": "Майка+Шорты", "выр": 22397526.0, "доля": 11.2}, {"подтип": "Кофта+Штаны", "выр": 14045662.0, "доля": 7.0}]}, {"цвет": "Коричневый", "выручка": 176084429.0, "выручка_24": 39004636.0, "доля": 4.7, "артикулов": 39, "продажи": 97220, "ср_чек": 2029, "выр_на_арт": 4514985, "упущенная": 1974305.52, "aw_доля": 80, "рост": 351.4, "по_месяцам": {"8": {"rev": 19252861.0, "chek": 1514, "sales": 12354}, "9": {"rev": 16757046.0, "chek": 1794, "sales": 11015}, "10": {"rev": 28049532.0, "chek": 1906, "sales": 15874}, "11": {"rev": 34820539.0, "chek": 2111, "sales": 20574}, "12": {"rev": 41446242.0, "chek": 2375, "sales": 19616}, "1": {"rev": 35758209.0, "chek": 2112, "sales": 17787}}, "топ_бренды": [{"бренд": "QUEENKAT", "выр": 34983825.0, "доля": 19.9}, {"бренд": "Aiday", "выр": 12494629.0, "доля": 7.1}, {"бренд": "Ivanko", "выр": 12492300.0, "доля": 7.1}, {"бренд": "Pavlotti", "выр": 12277280.0, "доля": 7.0}], "по_типам": [{"тип": "Домашний", "выр": 118412002.0, "доля": 67.2}, {"тип": "Скимс", "выр": 23601315.0, "доля": 13.4}, {"тип": "Утепленный", "выр": 22412274.0, "доля": 12.7}, {"тип": "Новогодний", "выр": 7369818.0, "доля": 4.2}], "по_подтипам": [{"подтип": "Футболка+Шорты", "выр": 33593541.0, "доля": 19.1}, {"подтип": "Рубашка+Штаны", "выр": 32723066.0, "доля": 18.6}, {"подтип": "Футболка+Штаны", "выр": 29186267.0, "доля": 16.6}, {"подтип": "Лонгслив+Штаны", "выр": 28705746.0, "доля": 16.3}]}, {"цвет": "Зеленый", "выручка": 113000124.0, "выручка_24": 102606953.0, "доля": 3.0, "артикулов": 22, "продажи": 98609, "ср_чек": 1286, "выр_на_арт": 5136369, "упущенная": 1576314.05, "aw_доля": 80, "рост": 10.1, "по_месяцам": {"8": {"rev": 15957704.0, "chek": 801, "sales": 17031}, "9": {"rev": 6906485.0, "chek": 948, "sales": 8141}, "10": {"rev": 13017207.0, "chek": 1220, "sales": 12745}, "11": {"rev": 28102023.0, "chek": 1789, "sales": 18754}, "12": {"rev": 33658900.0, "chek": 1199, "sales": 27401}, "1": {"rev": 15357805.0, "chek": 1144, "sales": 14537}}, "топ_бренды": [{"бренд": "Laik Moll", "выр": 15349944.0, "доля": 13.6}, {"бренд": "Home Style", "выр": 11712306.0, "доля": 10.4}, {"бренд": "ТВОЕ", "выр": 9375712.0, "доля": 8.3}, {"бренд": "SOFASLEEP", "выр": 8791170.0, "доля": 7.8}], "по_типам": [{"тип": "Домашний", "выр": 68857504.0, "доля": 60.9}, {"тип": "Новогодний", "выр": 40124718.0, "доля": 35.5}, {"тип": "Утепленный", "выр": 4017902.0, "доля": 3.6}], "по_подтипам": [{"подтип": "Футболка+Бриджи", "выр": 37051177.0, "доля": 32.8}, {"подтип": "Рубашка+Штаны", "выр": 32003715.0, "доля": 28.3}, {"подтип": "Футболка+Штаны", "выр": 25707868.0, "доля": 22.8}, {"подтип": "Лиф+Штаны", "выр": 7031276.0, "доля": 6.2}]}, {"цвет": "Желтый", "выручка": 97308634.0, "выручка_24": 68766934.0, "доля": 2.6, "артикулов": 25, "продажи": 54244, "ср_чек": 1950, "выр_на_арт": 3892345, "упущенная": 406591.61, "aw_доля": 61, "рост": 41.5, "по_месяцам": {"8": {"rev": 20378225.0, "chek": 1757, "sales": 10440}, "9": {"rev": 17800054.0, "chek": 1869, "sales": 11245}, "10": {"rev": 15054871.0, "chek": 1608, "sales": 10938}, "11": {"rev": 10540993.0, "chek": 2440, "sales": 4954}, "12": {"rev": 13951726.0, "chek": 2266, "sales": 7068}, "1": {"rev": 19582765.0, "chek": 2037, "sales": 9599}}, "топ_бренды": [{"бренд": "I am pijama", "выр": 37279868.0, "доля": 38.3}, {"бренд": "OuMoona", "выр": 10600699.0, "доля": 10.9}, {"бренд": "Latvinas", "выр": 10493088.0, "доля": 10.8}, {"бренд": "SALAMPI Home", "выр": 7467169.0, "доля": 7.7}], "по_типам": [{"тип": "Домашний", "выр": 63934913.0, "доля": 65.7}, {"тип": "Скимс", "выр": 10485370.0, "доля": 10.8}, {"тип": "Набор", "выр": 7984138.0, "доля": 8.2}, {"тип": "Утепленный", "выр": 6763257.0, "доля": 7.0}], "по_подтипам": [{"подтип": "Майка+Шорты", "выр": 29117506.0, "доля": 29.9}, {"подтип": "Рубашка+Штаны", "выр": 16933826.0, "доля": 17.4}, {"подтип": "Топ+Штаны", "выр": 9537656.0, "доля": 9.8}, {"подтип": "3в1", "выр": 5794640.0, "доля": 6.0}]}, {"цвет": "Бордо", "выручка": 79664931.0, "выручка_24": 8385594.0, "доля": 2.1, "артикулов": 13, "продажи": 60130, "ср_чек": 1864, "выр_на_арт": 6128072, "упущенная": 3318818.73, "aw_доля": 89, "рост": 850.0, "по_месяцам": {"8": {"rev": 6780664.0, "chek": 1079, "sales": 5741}, "9": {"rev": 2163147.0, "chek": 727, "sales": 3295}, "10": {"rev": 6684375.0, "chek": 1117, "sales": 7667}, "11": {"rev": 11263418.0, "chek": 2529, "sales": 8170}, "12": {"rev": 32453158.0, "chek": 2507, "sales": 19416}, "1": {"rev": 20320169.0, "chek": 1646, "sales": 15841}}, "топ_бренды": [{"бренд": "QUEENKAT", "выр": 24645612.0, "доля": 30.9}, {"бренд": "FreeSelf", "выр": 19190476.0, "доля": 24.1}, {"бренд": "I am pijama", "выр": 9475904.0, "доля": 11.9}, {"бренд": "Aziatex", "выр": 4146176.0, "доля": 5.2}], "по_типам": [{"тип": "Домашний", "выр": 46784135.0, "доля": 58.7}, {"тип": "Новогодний", "выр": 32880796.0, "доля": 41.3}], "по_подтипам": [{"подтип": "Футболка+Штаны", "выр": 36418551.0, "доля": 45.7}, {"подтип": "Футболка+Шорты", "выр": 21605428.0, "доля": 27.1}, {"подтип": "Лонгслив+Штаны", "выр": 16704444.0, "доля": 21.0}, {"подтип": "Рубашка+Штаны", "выр": 4936508.0, "доля": 6.2}]}, {"цвет": "Теплый белый", "выручка": 63461683.0, "выручка_24": 13168209.0, "доля": 1.7, "артикулов": 2, "продажи": 53629, "ср_чек": 1254, "выр_на_арт": 31730842, "упущенная": 226877.03, "aw_доля": 63, "рост": 381.9, "по_месяцам": {"8": {"rev": 7282471.0, "chek": 1485, "sales": 6095}, "9": {"rev": 16114587.0, "chek": 1245, "sales": 14974}, "10": {"rev": 10665576.0, "chek": 1298, "sales": 8927}, "11": {"rev": 12149058.0, "chek": 1134, "sales": 10388}, "12": {"rev": 7379646.0, "chek": 1407, "sales": 5523}, "1": {"rev": 9870345.0, "chek": 1146, "sales": 7722}}, "топ_бренды": [{"бренд": "Purrr", "выр": 63461683.0, "доля": 100.0}], "по_типам": [{"тип": "Домашний", "выр": 63461683.0, "доля": 100.0}], "по_подтипам": [{"подтип": "Рубашка+Штаны", "выр": 63461683.0, "доля": 100.0}]}, {"цвет": "Голубой", "выручка": 63018934.0, "выручка_24": 57866186.0, "доля": 1.7, "артикулов": 16, "продажи": 33795, "ср_чек": 2323, "выр_на_арт": 3938683, "упущенная": 0.0, "aw_доля": 70, "рост": 8.9, "по_месяцам": {"8": {"rev": 13068120.0, "chek": 1955, "sales": 6167}, "9": {"rev": 6085918.0, "chek": 1680, "sales": 3928}, "10": {"rev": 5639922.0, "chek": 1604, "sales": 3369}, "11": {"rev": 10113323.0, "chek": 2215, "sales": 6454}, "12": {"rev": 8782122.0, "chek": 2489, "sales": 5328}, "1": {"rev": 19329529.0, "chek": 3043, "sales": 8549}}, "топ_бренды": [{"бренд": "Namari home", "выр": 14940300.0, "доля": 23.7}, {"бренд": "OuMoona", "выр": 8174903.0, "доля": 13.0}, {"бренд": "I am pijama", "выр": 7613340.0, "доля": 12.1}, {"бренд": "FreeSelf", "выр": 5643329.0, "доля": 9.0}], "по_типам": [{"тип": "Домашний", "выр": 53121258.0, "доля": 84.3}, {"тип": "Скимс", "выр": 5426689.0, "доля": 8.6}, {"тип": "Набор", "выр": 2652501.0, "доля": 4.2}, {"тип": "Утепленный", "выр": 1818486.0, "доля": 2.9}], "по_подтипам": [{"подтип": "Рубашка+Штаны", "выр": 39619598.0, "доля": 62.9}, {"подтип": "Футболка+Штаны", "выр": 5643329.0, "доля": 9.0}, {"подтип": "Лонгслив+Шорты", "выр": 5426689.0, "доля": 8.6}, {"подтип": "3в2", "выр": 2652501.0, "доля": 4.2}]}, {"цвет": "Сиреневый", "выручка": 57280420.0, "выручка_24": 19620102.0, "доля": 1.5, "артикулов": 9, "продажи": 42059, "ср_чек": 1677, "выр_на_арт": 6364491, "упущенная": 1459320.37, "aw_доля": 70, "рост": 191.9, "по_месяцам": {"8": {"rev": 9029610.0, "chek": 1272, "sales": 9659}, "9": {"rev": 7960527.0, "chek": 2582, "sales": 3055}, "10": {"rev": 6110501.0, "chek": 1150, "sales": 5823}, "11": {"rev": 13461675.0, "chek": 1948, "sales": 9183}, "12": {"rev": 12138549.0, "chek": 1306, "sales": 8393}, "1": {"rev": 8579558.0, "chek": 1759, "sales": 5946}}, "топ_бренды": [{"бренд": "Натаsha", "выр": 13463114.0, "доля": 23.5}, {"бренд": "OuMoona", "выр": 12827778.0, "доля": 22.4}, {"бренд": "Larisabelle", "выр": 7527825.0, "доля": 13.1}, {"бренд": "FreeSelf", "выр": 4406021.0, "доля": 7.7}], "по_типам": [{"тип": "Домашний", "выр": 32563346.0, "доля": 56.8}, {"тип": "Утепленный", "выр": 24717074.0, "доля": 43.2}], "по_подтипам": [{"подтип": "Лонгслив+Штаны", "выр": 17189249.0, "доля": 30.0}, {"подтип": "Рубашка+Штаны", "выр": 12827778.0, "доля": 22.4}, {"подтип": "Футболка+Бриджи", "выр": 11249472.0, "доля": 19.6}, {"подтип": "Кофта+Штаны", "выр": 7527825.0, "доля": 13.1}]}, {"цвет": "Леопардовый", "выручка": 54363811.0, "выручка_24": 40304371.0, "доля": 1.4, "артикулов": 13, "продажи": 57937, "ср_чек": 1391, "выр_на_арт": 4181832, "упущенная": 86874.03, "aw_доля": 54, "рост": 34.9, "по_месяцам": {"8": {"rev": 13536124.0, "chek": 914, "sales": 15383}, "9": {"rev": 11624000.0, "chek": 1134, "sales": 20488}, "10": {"rev": 10815627.0, "chek": 1482, "sales": 9669}, "11": {"rev": 6654486.0, "chek": 1953, "sales": 4157}, "12": {"rev": 7905721.0, "chek": 1855, "sales": 4502}, "1": {"rev": 3827853.0, "chek": 1558, "sales": 3738}}, "топ_бренды": [{"бренд": "ZR dream", "выр": 9115617.0, "доля": 16.8}, {"бренд": "INDÌMIS", "выр": 9088181.0, "доля": 16.7}, {"бренд": "ВИТА Компани", "выр": 8235848.0, "доля": 15.1}, {"бренд": "Modjimoda", "выр": 4323782.0, "доля": 8.0}], "по_типам": [{"тип": "Домашний", "выр": 25910698.0, "доля": 47.7}, {"тип": "Плюс сайз", "выр": 10249315.0, "доля": 18.9}, {"тип": "Утепленный", "выр": 9115617.0, "доля": 16.8}, {"тип": "Скимс", "выр": 9088181.0, "доля": 16.7}], "по_подтипам": [{"подтип": "Рубашка+Штаны", "выр": 15428897.0, "доля": 28.4}, {"подтип": "Майка+Шорты", "выр": 11224726.0, "доля": 20.6}, {"подтип": "Комбинезон", "выр": 9088181.0, "доля": 16.7}, {"подтип": "Футболка+Шорты", "выр": 5324224.0, "доля": 9.8}]}, {"цвет": "Серый меланж", "выручка": 36923385.0, "выручка_24": 22798194.0, "доля": 1.0, "артикулов": 6, "продажи": 24840, "ср_чек": 1734, "выр_на_арт": 6153898, "упущенная": 0.0, "aw_доля": 81, "рост": 62.0, "по_месяцам": {"8": {"rev": 4512447.0, "chek": 1216, "sales": 4039}, "9": {"rev": 2412491.0, "chek": 753, "sales": 3407}, "10": {"rev": 5717428.0, "chek": 1648, "sales": 4149}, "11": {"rev": 7816898.0, "chek": 1928, "sales": 4689}, "12": {"rev": 7822380.0, "chek": 2438, "sales": 3051}, "1": {"rev": 8641741.0, "chek": 1830, "sales": 5505}}, "топ_бренды": [{"бренд": "SAMAЯ", "выр": 11407755.0, "доля": 30.9}, {"бренд": "DENYMAR", "выр": 10135458.0, "доля": 27.4}, {"бренд": "MARFAWOMEN", "выр": 9458829.0, "доля": 25.6}, {"бренд": "Pink Marie", "выр": 2307160.0, "доля": 6.2}], "по_типам": [{"тип": "Домашний", "выр": 15608031.0, "доля": 42.3}, {"тип": "Утепленный", "выр": 11856525.0, "доля": 32.1}, {"тип": "Скимс", "выр": 9458829.0, "доля": 25.6}], "по_подтипам": [{"подтип": "Футболка+Бриджи", "выр": 11407755.0, "доля": 30.9}, {"подтип": "Лонгслив+Штаны", "выр": 11179896.0, "доля": 30.3}, {"подтип": "Кофта+Штаны", "выр": 10135458.0, "доля": 27.4}, {"подтип": "Лиф+Штаны", "выр": 2307160.0, "доля": 6.2}]}, {"цвет": "Бело-серый", "выручка": 25783804.0, "выручка_24": 5178114.0, "доля": 0.7, "артикулов": 2, "продажи": 31602, "ср_чек": 826, "выр_на_арт": 12891902, "упущенная": 75602.17, "aw_доля": 100, "рост": 397.9, "по_месяцам": {"8": {"rev": 0.0, "chek": 0, "sales": 0}, "9": {"rev": 0.0, "chek": 0, "sales": 0}, "10": {"rev": 0.0, "chek": 0, "sales": 0}, "11": {"rev": 4544128.0, "chek": 928, "sales": 4990}, "12": {"rev": 5666667.0, "chek": 921, "sales": 6264}, "1": {"rev": 15573009.0, "chek": 676, "sales": 20348}}, "топ_бренды": [{"бренд": "Sarkech Moda", "выр": 15057544.0, "доля": 58.4}, {"бренд": "TILEK STYLE", "выр": 10726260.0, "доля": 41.6}], "по_типам": [{"тип": "Домашний", "выр": 25783804.0, "доля": 100.0}], "по_подтипам": [{"подтип": "Футболка+Штаны", "выр": 25783804.0, "доля": 100.0}]}], "trend_colors": [{"цвет_норм": "Небесно-голубой", "выр": 11444791, "арт": 2, "чек": 3377.0, "упущ": 0.0, "выр_24": 4544182.0, "рост": 151.9, "выр_на_арт": 5722396.0}, {"цвет_норм": "Медно-шоколадный", "выр": 10823082, "арт": 2, "чек": 2769.0, "упущ": 0.0, "выр_24": NaN, "рост": NaN, "выр_на_арт": 5411541.0}, {"цвет_норм": "Голубой", "выр": 63018934, "арт": 16, "чек": 2323.0, "упущ": 0.0, "выр_24": 57866186.0, "рост": 8.9, "выр_на_арт": 3938683.0}, {"цвет_норм": "Коричневый", "выр": 176084429, "арт": 39, "чек": 2029.0, "упущ": 1974305.52, "выр_24": 39004636.0, "рост": 351.4, "выр_на_арт": 4514985.0}, {"цвет_норм": "Желтый", "выр": 97308634, "арт": 25, "чек": 1950.0, "упущ": 406591.61, "выр_24": 68766934.0, "рост": 41.5, "выр_на_арт": 3892345.0}, {"цвет_норм": "Бордо", "выр": 79664931, "арт": 13, "чек": 1864.0, "упущ": 3318818.73, "выр_24": 8385594.0, "рост": 850.0, "выр_на_арт": 6128072.0}, {"цвет_норм": "Бирюзовый", "выр": 20590582, "арт": 6, "чек": 1827.0, "упущ": 0.0, "выр_24": 5199746.0, "рост": 296.0, "выр_на_арт": 3431764.0}, {"цвет_норм": "Серый металлик", "выр": 12093504, "арт": 3, "чек": 1788.0, "упущ": 0.0, "выр_24": 1991288.0, "рост": 507.3, "выр_на_арт": 4031168.0}], "model_colors": {"m1": [{"цвет": "Белый", "выр": 222804508.0, "доля": 24.4, "арт": 36, "чек": 1887}, {"цвет": "Черный", "выр": 159515596.0, "доля": 17.5, "арт": 21, "чек": 1782}, {"цвет": "Бежевый", "выр": 80651058.0, "доля": 8.8, "арт": 14, "чек": 1972}, {"цвет": "Серый", "выр": 77182067.0, "доля": 8.4, "арт": 16, "чек": 2463}, {"цвет": "Теплый белый", "выр": 63461683.0, "доля": 6.9, "арт": 2, "чек": 1254}, {"цвет": "Розовый", "выр": 59990201.0, "доля": 6.6, "арт": 13, "чек": 2250}, {"цвет": "Голубой", "выр": 39619598.0, "доля": 4.3, "арт": 8, "чек": 2476}, {"цвет": "Красный", "выр": 37272585.0, "доля": 4.1, "арт": 8, "чек": 1921}, {"цвет": "Коричневый", "выр": 27573524.0, "доля": 3.0, "арт": 6, "чек": 2472}, {"цвет": "Желтый", "выр": 16933826.0, "доля": 1.9, "арт": 4, "чек": 2606}], "m2_silk": [{"цвет": "Белый", "выр": 222804508.0, "доля": 24.4, "арт": 36, "чек": 1887}, {"цвет": "Черный", "выр": 159515596.0, "доля": 17.5, "арт": 21, "чек": 1782}, {"цвет": "Бежевый", "выр": 80651058.0, "доля": 8.8, "арт": 14, "чек": 1972}, {"цвет": "Серый", "выр": 77182067.0, "доля": 8.4, "арт": 16, "чек": 2463}, {"цвет": "Теплый белый", "выр": 63461683.0, "доля": 6.9, "арт": 2, "чек": 1254}, {"цвет": "Розовый", "выр": 59990201.0, "доля": 6.6, "арт": 13, "чек": 2250}, {"цвет": "Голубой", "выр": 39619598.0, "доля": 4.3, "арт": 8, "чек": 2476}, {"цвет": "Красный", "выр": 37272585.0, "доля": 4.1, "арт": 8, "чек": 1921}, {"цвет": "Коричневый", "выр": 27573524.0, "доля": 3.0, "арт": 6, "чек": 2472}, {"цвет": "Желтый", "выр": 16933826.0, "доля": 1.9, "арт": 4, "чек": 2606}], "m3": [{"цвет": "Красный", "выр": 158559385.0, "доля": 84.2, "арт": 20, "чек": 1593}, {"цвет": "Зеленый", "выр": 20580522.0, "доля": 10.9, "арт": 3, "чек": 1682}, {"цвет": "Коричневый", "выр": 2907722.0, "доля": 1.5, "арт": 1, "чек": 1463}, {"цвет": "Бежевый", "выр": 2204784.0, "доля": 1.2, "арт": 1, "чек": 2425}, {"цвет": "Белый", "выр": 2174609.0, "доля": 1.2, "арт": 1, "чек": 3188}, {"цвет": "Синий", "выр": 1911468.0, "доля": 1.0, "арт": 1, "чек": 1489}], "m4": [{"цвет": "Белый", "выр": 70482400.0, "доля": 21.5, "арт": 11, "чек": 1474}, {"цвет": "Черный", "выр": 52358432.0, "доля": 16.0, "арт": 6, "чек": 1251}, {"цвет": "Бежевый", "выр": 48134793.0, "доля": 14.7, "арт": 6, "чек": 1492}, {"цвет": "Серый", "выр": 34351206.0, "доля": 10.5, "арт": 8, "чек": 1386}, {"цвет": "Бело-серый", "выр": 25783804.0, "доля": 7.9, "арт": 2, "чек": 826}, {"цвет": "Коричневый", "выр": 22769610.0, "доля": 6.9, "арт": 4, "чек": 2118}, {"цвет": "Бордо", "выр": 17228075.0, "доля": 5.3, "арт": 3, "чек": 2109}, {"цвет": "Зеленый", "выр": 11386133.0, "доля": 3.5, "арт": 3, "чек": 1110}, {"цвет": "Пыльный голубой", "выр": 8363020.0, "доля": 2.5, "арт": 1, "чек": 870}, {"цвет": "Розовый", "выр": 7618866.0, "доля": 2.3, "арт": 2, "чек": 919}], "m5": [{"цвет": "Коричневый", "выр": 19251257.0, "доля": 26.8, "арт": 3, "чек": 2192}, {"цвет": "Белый", "выр": 18483870.0, "доля": 25.7, "арт": 4, "чек": 1217}, {"цвет": "Розовый", "выр": 14423843.0, "доля": 20.0, "арт": 3, "чек": 1673}, {"цвет": "Серый меланж", "выр": 9458829.0, "доля": 13.1, "арт": 1, "чек": 2318}, {"цвет": "Серый", "выр": 3945029.0, "доля": 5.5, "арт": 2, "чек": 2419}, {"цвет": "Белый глянец", "выр": 3937180.0, "доля": 5.5, "арт": 1, "чек": 1150}, {"цвет": "Бежевый", "выр": 2466331.0, "доля": 3.4, "арт": 1, "чек": 1291}]}};
+const CH = {"\u0411\u0435\u043b\u044b\u0439": "#f5f5f0", "\u0427\u0435\u0440\u043d\u044b\u0439": "#1a1a1a", "\u041a\u0440\u0430\u0441\u043d\u044b\u0439": "#c43030", "\u0421\u0435\u0440\u044b\u0439": "#7f8c8d", "\u0411\u0435\u0436\u0435\u0432\u044b\u0439": "#d4a574", "\u0420\u043e\u0437\u043e\u0432\u044b\u0439": "#e8748a", "\u041a\u043e\u0440\u0438\u0447\u043d\u0435\u0432\u044b\u0439": "#7a4520", "\u0417\u0435\u043b\u0435\u043d\u044b\u0439": "#2d7a3a", "\u0416\u0435\u043b\u0442\u044b\u0439": "#e0a020", "\u0411\u043e\u0440\u0434\u043e": "#7a1a2a", "\u0413\u043e\u043b\u0443\u0431\u043e\u0439": "#4a90c4", "\u0421\u0438\u0440\u0435\u043d\u0435\u0432\u044b\u0439": "#8a4eb8", "\u041b\u0435\u043e\u043f\u0430\u0440\u0434\u043e\u0432\u044b\u0439": "#c8a030", "\u0425\u0430\u043a\u0438": "#6b7a2a", "\u0421\u0438\u043d\u0438\u0439": "#2a4a8a", "\u041f\u0435\u0440\u0441\u0438\u043a\u043e\u0432\u044b\u0439": "#e8905a", "\u0422\u0435\u0440\u0440\u0430\u043a\u043e\u0442\u043e\u0432\u044b\u0439": "#c45030", "\u0411\u0438\u0440\u044e\u0437\u043e\u0432\u044b\u0439": "#2a9a8a", "\u0413\u043e\u0440\u0447\u0438\u0447\u043d\u044b\u0439": "#b87820", "\u0422\u0435\u043f\u043b\u044b\u0439 \u0431\u0435\u043b\u044b\u0439": "#ede0c8", "\u041d\u0435\u0431\u0435\u0441\u043d\u043e-\u0433\u043e\u043b\u0443\u0431\u043e\u0439": "#7abce0", "\u041c\u0435\u0434\u043d\u043e-\u0448\u043e\u043a\u043e\u043b\u0430\u0434\u043d\u044b\u0439": "#8a4a1a", "\u0421\u0435\u0440\u044b\u0439 \u043c\u0435\u0442\u0430\u043b\u043b\u0438\u043a": "#8a9ab0", "\u0411\u0435\u043b\u043e-\u0441\u0435\u0440\u044b\u0439": "#d0d0c8", "\u0421\u0438\u043d\u0435-\u0441\u0435\u0440\u044b\u0439": "#5a6a80", "\u0421\u0435\u0440\u044b\u0439 \u043c\u0435\u043b\u0430\u043d\u0436": "#909090"};
+const MO=['8','9','10','11','12','1'];
+const MN={'8':'Авг','9':'Сен','10':'Окт','11':'Ноя','12':'Дек','1':'Янв'};
+const f=n=>{if(!n||n==0)return'—';if(n>=1e9)return(n/1e9).toFixed(2)+'млрд';if(n>=1e6)return(n/1e6).toFixed(1)+'млн';if(n>=1e3)return Math.round(n/1e3)+'тыс';return Math.round(n).toLocaleString('ru')};
+const fr=n=>n?Math.round(n).toLocaleString('ru')+'₽':'—';
+const BARCOLORS=['#2255d4','#7c3aed','#0d9e6e','#d4780a','#c43030','#0891c0'];
+const hlvl=(v,mx)=>{if(!v||v==0)return 0;const r=v/mx;if(r>.75)return 5;if(r>.5)return 4;if(r>.3)return 3;if(r>.12)return 2;return 1};
+
+function getHex(c){return CH[c]||'#888'}
+
+// Palette strip
+const palDiv=document.getElementById('palette-strip');
+CD.all_colors.forEach(c=>{
+  const d=document.createElement('div');
+  d.className='pal-dot';
+  d.style.background=getHex(c.цвет);
+  d.title=`${c.цвет} · ${f(c.выручка)} · ${fr(c.ср_чек)}`;
+  if(c.цвет==='Белый'||c.цвет==='Бежевый') d.style.border='2px solid rgba(0,0,0,.2)';
+  palDiv.appendChild(d);
+});
+
+// Trend matrix
+const TC=CD.trend_colors;
+document.getElementById('trend-matrix').innerHTML=TC.map(c=>{
+  const name=c.цвет_норм;
+  const g=c.рост;
+  const gStr=g==null?'NEW':(g>0?'+':'')+g.toFixed(0)+'%';
+  const gCls=g==null?'new':g>50?'pos':g<0?'neg':'';
+  const isNew=g==null;
+  return`<div class="tm-cell">
+    ${isNew?'<div class="tm-label">NEW</div>':''}
+    <div class="tm-swatch" style="background:${getHex(name)}"></div>
+    <div class="tm-name">${name}</div>
+    <div class="tm-chek">${fr(Math.round(c.чек))}</div>
+    <div class="tm-growth ${gCls}">${gStr}</div>
+    <div style="font-size:8.5px;color:var(--mut);margin-top:2px;font-family:'IBM Plex Mono',monospace">${f(c.выр_на_арт)}/арт</div>
+  </div>`;
+}).join('');
+
+// Main insight
+document.getElementById('color-main-insight').innerHTML=`
+  <b>Ключевые выводы по цветам:</b><br>
+  🏆 <b>Белый и Чёрный</b> — фундамент ассортимента (21.3% + 17.4% = 38.7% рынка). Всесезонные, но низкий чек (1448–1576₽). Высокая конкуренция.<br>
+  🔴 <b>Красный</b> — 12.2% рынка, но <b>95% AW-сезон</b> — строго новогодний. Заходить с сентября.<br>
+  🤎 <b>Коричневый/Шоколадный</b> — рост <b>+351%</b>, ср. чек <b>2029₽</b> — один из лучших показателей. 80% выручки в AW. Трендовый оттенок осени 2025.<br>
+  🟣 <b>Бордо</b> — рост <b>+850%</b>, чек 1864₽, выр/арт 6.1млн — взрывной рост при высоких метриках. Недооценённый цвет.<br>
+  🔵 <b>Голубой</b> — самый высокий чек среди всех (2323₽), рост +9%. Нишевый но маржинальный.<br>
+  ☀️ <b>Небесно-голубой и Медно-шоколадный</b> — новые оттенки с чеком 3377₽ и 2769₽ — единичные артикулы с огромным потенциалом.`;
+
+// MODEL COLORS
+const modelMeta=[
+  {id:'m1',label:'Модель 1 · Рубашка+Штаны (хлопок)',key:'m1'},
+  {id:'m3',label:'Модель 3 · Новогодний Family Look',key:'m3'},
+  {id:'m4',label:'Модель 4 · Футболка+Штаны',key:'m4'},
+  {id:'m5',label:'Модель 5 · Топ+Штаны (Скимс)',key:'m5'},
+];
+
+let mcHtml='';
+modelMeta.forEach(mm=>{
+  const items=CD.model_colors[mm.key]||[];
+  if(!items.length)return;
+  const maxV=Math.max(...items.map(i=>i.выр||0));
+  mcHtml+=`<div class="model-col-block">
+    <div class="model-col-title">${mm.label}</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+      ${items.map(c=>`<div class="mc-item" title="${c.цвет} · ${fr(c.чек)} · ${c.доля}%">
+        <div class="mc-sw" style="background:${getHex(c.цвет)}${c.цвет==='Белый'?';border:2px solid #ccc':''}"></div>
+        <div class="mc-n">${c.цвет}</div>
+        <div class="mc-d">${c.доля}%</div>
+      </div>`).join('')}
+    </div>
+    <div class="col-bars">${items.map((c,i)=>`
+      <div class="cb-item">
+        <div class="cb-hd">
+          <span class="cb-lbl" style="display:flex;align-items:center;gap:5px">
+            <span style="width:10px;height:10px;border-radius:50%;background:${getHex(c.цвет)};border:1px solid rgba(0,0,0,.1);flex-shrink:0"></span>
+            ${c.цвет}
+          </span>
+          <span class="cb-val">${c.доля}% · ${fr(c.чек)} · ${c.арт}арт</span>
+        </div>
+        <div class="cb-track"><div class="cb-fill" style="width:${maxV?(c.выр/maxV*100).toFixed(1):0}%;background:${getHex(c.цвет)}${c.цвет==='Белый'?'':''};opacity:.85"></div></div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+});
+document.getElementById('model-colors-block').innerHTML=mcHtml;
+
+// ALL COLORS DETAIL
+function buildColorCard(c){
+  const hex=getHex(c.цвет);
+  const g=c.рост;
+  const gStr=g==null?'NEW':(g>0?'+':'')+g.toFixed(0)+'%';
+  const gCls=g==null?'hi':g>50?'pos':g<0?'neg':'warn';
+  const isTextWhite=c.цвет==='Черный';
+
+  // Monthly mini-grid
+  const mvals=MO.map(m=>c.по_месяцам[m]?.rev||0);
+  const mmx=Math.max(...mvals);
+  const mGrid=`<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--brd);border-radius:6px;overflow:hidden;margin-top:10px">
+    ${MO.map(m=>`<div style="background:var(--s2);padding:4px 2px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--mut);font-weight:600">${MN[m]}</div>`).join('')}
+    ${MO.map(m=>{const d=c.по_месяцам[m]||{};const v=d.rev||0;const lv=hlvl(v,mmx);
+      return`<div class="hm${lv}" style="padding:5px 2px;text-align:center">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700">${v?f(v):'—'}</div>
+        ${d.chek?`<div style="font-size:8px;opacity:.7">${d.chek.toLocaleString('ru')}₽</div>`:''}
+      </div>`;}).join('')}
+  </div>`;
+
+  // Bars for type breakdown
+  const typeMax=Math.max(...(c.по_типам||[]).map(t=>t.выр||0));
+  const typeBars=(c.по_типам||[]).map((t,i)=>`
+    <div class="cb-item"><div class="cb-hd">
+      <span class="cb-lbl">${t.тип}</span><span class="cb-val">${t.доля}%</span>
+    </div>
+    <div class="cb-track"><div class="cb-fill" style="width:${typeMax?(t.выр/typeMax*100).toFixed(0):0}%;background:${BARCOLORS[i%BARCOLORS.length]}"></div></div>
+    </div>`).join('');
+
+  const awBadge=c.aw_доля>70?`<span class="aw-badge aw-hi">❄️ AW ${c.aw_доля}%</span>`:`<span class="aw-badge aw-lo">☀️ SS ${100-c.aw_доля}%</span>`;
+
+  return`<div class="col-card" data-chek="${c.ср_чек}" data-aw="${c.aw_доля}" data-growth="${g||0}">
+    <div class="col-head">
+      <div class="col-swatch" style="background:${hex}${c.цвет==='Белый'?';border:1px solid #ccc':''}"></div>
+      <div class="col-info">
+        <div class="col-name">${c.цвет}</div>
+        <div style="font-size:11px;color:var(--dim);display:flex;gap:6px;flex-wrap:wrap;margin-top:2px">
+          ${awBadge}
+          <span style="font-size:10px;color:var(--dim)">${c.артикулов} арт · ${f(c.продажи)} шт</span>
+          ${c.упущенная>2e6?`<span style="font-size:10px;color:var(--orange)">Упущ: ${f(c.упущенная)}</span>`:''}
+        </div>
+      </div>
+      <div class="col-kpis">
+        <div class="ckpi"><div class="ckl">Выручка</div><div class="ckv">${f(c.выручка)}</div></div>
+        <div class="ckpi"><div class="ckl">Доля</div><div class="ckv">${c.доля}%</div></div>
+        <div class="ckpi"><div class="ckl">Ср.чек</div><div class="ckv hi">${fr(c.ср_чек)}</div></div>
+        <div class="ckpi"><div class="ckl">Выр/арт</div><div class="ckv">${f(c.выр_на_арт)}</div></div>
+        <div class="ckpi"><div class="ckl">Рост</div><div class="ckv ${gCls}">${gStr}</div></div>
+      </div>
+    </div>
+    <div class="col-body">
+      ${mGrid}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+        <div>
+          <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;margin-bottom:7px">По типам костюма</div>
+          <div class="col-bars">${typeBars||'<div style="color:var(--mut);font-size:11px">—</div>'}</div>
+        </div>
+        <div>
+          <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);font-family:'IBM Plex Mono',monospace;margin-bottom:7px">Топ бренды</div>
+          <div class="col-bars">${(c.топ_бренды||[]).map((b,i)=>`
+            <div class="cb-item"><div class="cb-hd">
+              <span class="cb-lbl">${b.бренд}</span><span class="cb-val">${b.доля}% · ${f(b.выр)}</span>
+            </div>
+            <div class="cb-track"><div class="cb-fill" style="width:${b.доля*2}px;max-width:100%;background:${BARCOLORS[i%BARCOLORS.length]}"></div></div>
+            </div>`).join('')||'<div style="color:var(--mut);font-size:11px">—</div>'}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+const allList=document.getElementById('all-colors-list');
+let allCardsHtml=CD.all_colors.map(buildColorCard).join('');
+allList.innerHTML=allCardsHtml;
+
+function colFilter(type, btn){
+  document.querySelectorAll('#col-filters button').forEach(b=>{
+    b.style.background='var(--surf)';b.style.color='var(--dim)';b.style.borderColor='var(--brd)';b.style.fontWeight='400';
+  });
+  btn.style.background='var(--acc)';btn.style.color='#fff';btn.style.borderColor='var(--acc)';btn.style.fontWeight='700';
+  
+  document.querySelectorAll('.col-card').forEach(card=>{
+    const chek=parseInt(card.dataset.chek)||0;
+    const aw=parseInt(card.dataset.aw)||0;
+    const gr=parseFloat(card.dataset.growth)||0;
+    let show=true;
+    if(type==='aw') show=aw>70;
+    if(type==='highchek') show=chek>1800;
+    if(type==='growing') show=gr>50;
+    card.style.display=show?'':'none';
+  });
+}
+
+// Update nav
+const nav=document.querySelector('.model-nav');
+if(nav){
+  const lnk=document.createElement('a');
+  lnk.className='mnav';
+  lnk.href='#colors-section';
+  lnk.textContent='🎨 Цвета';
+  nav.appendChild(lnk);
+}
+
+})();
+</script>
+</body>
+</html>
